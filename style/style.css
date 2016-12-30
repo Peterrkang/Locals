@@ -1,0 +1,10 @@
+.error {
+  color: red
+}
+
+#map {
+  height: 50vh;
+  width: 50vw;
+  top: 50%;
+  position: relative;
+}
