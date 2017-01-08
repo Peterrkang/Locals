@@ -8,3 +8,9 @@
   top: 50%;
   position: relative;
 }
+
+#background {
+  background-image: url("../images/frontpage.jpg");
+  height: 500px;
+  width: 1000px;
+}

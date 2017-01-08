@@ -13,11 +13,11 @@ class ChatRoom extends Component{
     this.props.fetchChatRoom(this.props.params.id);
   }
 
+
   onFormSubmit(event){
-    event.preventDefault()
     const chat = { message: this.state.message, id: this.props.params.id, user: this.props.currentUser }
     this.props.addMessage(chat);
-    this.setState({message: ''});
+    this.setState({ message: '' });
   };
 
   onInputChange(event){
@@ -25,8 +25,6 @@ class ChatRoom extends Component{
   }
 
   renderChat(){
-
-    
     return Object.keys(this.props.messages).map((message)=>{
       const date = new Date(this.props.messages[message].created_at)
       return(
