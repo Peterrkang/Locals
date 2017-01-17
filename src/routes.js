@@ -4,11 +4,11 @@ import App from './components/app';
 import SignIn from './components/auth/signin';
 import SignOut from './components/auth/signout';
 import SignUp from './components/auth/signup';
-import Events from './containers/events';
+import Events from './components/events';
 import RequireAuth from './components/auth/require_auth';
 import Home from './components/home';
-import EventForm from './containers/event_form';
-import ChatRoom from './containers/chat_room';
+import EventForm from './components/event_form';
+import ChatRoom from './components/chat_room';
 
 
 export default (
