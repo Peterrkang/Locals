@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import SignIn from './auth/signin';
+import SignUp from './auth/signup';
+import Modal from './modal';
+import EventForm from './event_form';
 
 
 
 class Header extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {modal: false, type: ''}
+  }
+
+  onClick(event){
+    this.setState({modal: true, type: event.target.text})
+  }
+
   renderLinks(){
     if(this.props.authenticated){
       return[
@@ -21,25 +35,56 @@ class Header extends Component {
     }else{
       return [
         <li className="nav-item" key={1}>
-          <Link to="/signin" className="nav-link">Sign In</Link>
+          <a href="#" className="nav-link" onClick={this.onClick.bind(this)}>Sign In</a>
         </li>,
         <li className="nav-item" key={2}>
-          <Link to="/signup" className="nav-link">Sign Up</Link>
+          <a href="#" className="nav-link" onClick={this.onClick.bind(this)}>Sign Up</a>
         </li>
       ];
     }
   }
 
 
+
   render(){
-    return(
-      <nav className="navbar navbar-light">
-        <Link to="/" className="navbar-brand">LocaLs</Link>
-        <ul className="nav navbar-nav">
-          {this.renderLinks()}
-        </ul>
-      </nav>
-    );
+    if(this.state.modal == true){
+      let currModal;
+      if(this.state.type == 'Sign In'){
+        currModal = (
+          <SignIn />
+        )
+      }else if(this.state.type == 'Sign Up'){
+        currModal = (
+          <SignUp />
+        )
+      }else if(this.state.type == 'Set Event'){
+        currModal = (
+          <EventForm />
+        )
+      }
+      return(
+        <div>
+          <nav className="navbar navbar-light">
+            <Link to="/" className="navbar-brand">LocaLs</Link>
+            <ul className="nav navbar-nav">
+              {this.renderLinks()}
+            </ul>
+          </nav>
+          <Modal>
+            { currModal }
+          </Modal>
+        </div>
+      );
+    }else{
+      return(
+        <nav className="navbar navbar-light">
+          <Link to="/" className="navbar-brand">LocaLs</Link>
+          <ul className="nav navbar-nav">
+            {this.renderLinks()}
+          </ul>
+        </nav>
+      );
+    }
   }
 }
 
@@ -48,6 +93,8 @@ function mapStateToProps(state){
     authenticated: state.auth.authenticated
   };
 }
+
+
 
 
 export default connect(mapStateToProps)(Header);
