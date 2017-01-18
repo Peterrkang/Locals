@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import SignIn from './auth/signin';
-import SignUp from './auth/signup';
 import Modal from './modal';
-import EventForm from './event_form';
+import {openModal, closeModal} from '../actions';
+
 
 
 
@@ -12,11 +11,23 @@ class Header extends Component {
 
   constructor(props){
     super(props);
-    this.state = {modal: false, type: ''}
+    this.state = {showModal: false};
   }
 
-  onClick(event){
-    this.setState({modal: true, type: event.target.text})
+  open(event){
+    const target = event.target.text
+    if(target == 'Create Event'){
+      this.props.openModal(1);
+    }else if(target == 'Sign In'){
+      this.props.openModal(2);
+    }else if(target == 'Sign Up'){
+      this.props.openModal(3);
+    }
+    this.setState({ showModal: true });
+  }
+
+  close(event){
+    this.setState({ showModal: false });
   }
 
   renderLinks(){
@@ -29,16 +40,16 @@ class Header extends Component {
           <Link to="/events" className="nav-link">Events</Link>
         </li>,
         <li className="nav-item" key={3}>
-          <Link to="/events/new" className="nav-link">Set Event</Link>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Create Event</a>
         </li>
       ];
     }else{
       return [
         <li className="nav-item" key={1}>
-          <a href="#" className="nav-link" onClick={this.onClick.bind(this)}>Sign In</a>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Sign In</a>
         </li>,
         <li className="nav-item" key={2}>
-          <a href="#" className="nav-link" onClick={this.onClick.bind(this)}>Sign Up</a>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Sign Up</a>
         </li>
       ];
     }
@@ -47,19 +58,14 @@ class Header extends Component {
 
 
   render(){
-    if(this.state.modal == true){
-      let currModal;
-      if(this.state.type == 'Sign In'){
-        currModal = (
-          <SignIn />
+      let modal;
+      if(this.state.showModal == true){
+        modal = (
+          <Modal onClose={this.close.bind(this)}/>
         )
-      }else if(this.state.type == 'Sign Up'){
-        currModal = (
-          <SignUp />
-        )
-      }else if(this.state.type == 'Set Event'){
-        currModal = (
-          <EventForm />
+      }else{
+        modal = (
+          <noscript />
         )
       }
       return(
@@ -70,22 +76,11 @@ class Header extends Component {
               {this.renderLinks()}
             </ul>
           </nav>
-          <Modal>
-            { currModal }
-          </Modal>
+          {modal}
         </div>
       );
-    }else{
-      return(
-        <nav className="navbar navbar-light">
-          <Link to="/" className="navbar-brand">LocaLs</Link>
-          <ul className="nav navbar-nav">
-            {this.renderLinks()}
-          </ul>
-        </nav>
-      );
     }
-  }
+
 }
 
 function mapStateToProps(state){
@@ -95,6 +90,4 @@ function mapStateToProps(state){
 }
 
 
-
-
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, { openModal, closeModal })(Header);

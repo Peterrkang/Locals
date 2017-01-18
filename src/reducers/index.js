@@ -4,6 +4,7 @@ import authReducer from './auth_reducer';
 import eventReducer from './event_reducer';
 import activeReducer from './active_reducer';
 import chatReducer from './chat_reducer';
+import modalReducer from './modal_reducer';
 
 
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   auth: authReducer,
   events: eventReducer,
   activeEvent: activeReducer,
-  chat: chatReducer
+  chat: chatReducer,
+  modal: modalReducer
 });
 
 export default rootReducer;
