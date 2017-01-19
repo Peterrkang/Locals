@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Modal from './modal';
-import {openModal, closeModal} from '../actions';
+import { openModal } from '../actions';
 
 
 
@@ -40,16 +40,16 @@ class Header extends Component {
           <Link to="/events" className="nav-link">Events</Link>
         </li>,
         <li className="nav-item" key={3}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Create Event</a>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Create Event</a>
         </li>
       ];
     }else{
       return [
         <li className="nav-item" key={1}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Sign In</a>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Sign In</a>
         </li>,
         <li className="nav-item" key={2}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)} onBlur={this.close.bind(this)}>Sign Up</a>
+          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Sign Up</a>
         </li>
       ];
     }
@@ -61,7 +61,7 @@ class Header extends Component {
       let modal;
       if(this.state.showModal == true){
         modal = (
-          <Modal onClose={this.close.bind(this)}/>
+          <Modal onClose={this.close.bind(this)} />
         )
       }else{
         modal = (
@@ -90,4 +90,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, { openModal, closeModal })(Header);
+export default connect(mapStateToProps, { openModal })(Header);
