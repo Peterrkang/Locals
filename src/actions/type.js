@@ -9,4 +9,3 @@ export const FETCH_EVENT = 'fetch_events';
 export const FETCH_CHATROOM = 'fetch_chatroom';
 export const ADD_MESSAGE = 'add_message';
 export const OPEN_MODAL = 'open_modal';
-export const CLOSE_MODAL = 'close_modal';

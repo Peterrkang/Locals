@@ -4,10 +4,9 @@ import { Link } from 'react-router';
 
 
 class Event extends Component {
-
   render() {
     if(!this.props.activeEvent) {
-      return <div>Select a event to get started.</div>;
+      return <div>Select an event to get started.</div>;
     }else{
       return (
         <div>
@@ -15,7 +14,7 @@ class Event extends Component {
           <div>Title: {this.props.activeEvent.title}</div>
           <div>Description: {this.props.activeEvent.description}</div>
           <Link to={`/events/${this.props.activeEvent.id}/chatroom`} params={{id:this.props.activeEvent.id}}>
-            Chat With Community
+            Chat With Locals
           </Link>
         </div>
       );

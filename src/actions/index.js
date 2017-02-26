@@ -9,8 +9,7 @@ import {
   SELECTED_EVENT,
   FETCH_CHATROOM,
   ADD_MESSAGE,
-  OPEN_MODAL,
-  CLOSE_MODAL
+  OPEN_MODAL
  } from './type'
 
 
@@ -120,11 +119,5 @@ export function openModal(modal){
   return{
     type: OPEN_MODAL,
     payload: modal
-  }
-}
-
-export function closeModal(){
-  return{
-    type: CLOSE_MODAL
   }
 }

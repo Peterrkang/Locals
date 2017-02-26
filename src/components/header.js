@@ -55,8 +55,6 @@ class Header extends Component {
     }
   }
 
-
-
   render(){
       let modal;
       if(this.state.showModal == true){
@@ -80,7 +78,6 @@ class Header extends Component {
         </div>
       );
     }
-
 }
 
 function mapStateToProps(state){
