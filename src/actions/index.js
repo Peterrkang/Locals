@@ -8,7 +8,8 @@ import {
   NEW_EVENTS,
   SELECTED_EVENT,
   FETCH_CHATROOM,
-  ADD_MESSAGE
+  ADD_MESSAGE,
+  OPEN_MODAL
  } from './type'
 
 
@@ -112,5 +113,11 @@ export function addMessage({message, id, user}){
         });
     });
   }
+}
 
+export function openModal(modal){
+  return{
+    type: OPEN_MODAL,
+    payload: modal
+  }
 }

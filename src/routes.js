@@ -8,8 +8,7 @@ import Events from './components/events';
 import RequireAuth from './components/auth/require_auth';
 import Home from './components/home';
 import EventForm from './components/event_form';
-import Event from './components/event.js';
-import ChatRoom from './components/chat_room.js';
+import ChatRoom from './components/chat_room';
 
 
 export default (

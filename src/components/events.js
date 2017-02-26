@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import  GoogleMaps from './google_map';
-import Event from './event';
+import Event from '../components/event';
 
 class Events extends Component {
 

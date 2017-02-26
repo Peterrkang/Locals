@@ -8,9 +8,8 @@ import routes from './routes';
 import reduxThunk from 'redux-thunk';
 import { AUTH_USER } from './actions/type';
 
-
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-const store = createStoreWithMiddleware(reducers);
+export const store = createStoreWithMiddleware(reducers);
 const token = localStorage.getItem('token');
 
 
@@ -21,7 +20,6 @@ if(token) {
 
 
 ReactDOM.render(
-
   <Provider store={store}>
     <Router history={browserHistory} routes={routes}/>
   </Provider>

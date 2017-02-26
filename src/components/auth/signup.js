@@ -7,8 +7,11 @@ class SignUp extends Component {
 
   handleFormSubmit(formProps) {
     this.props.signupUser(formProps);
+    if(this.props.errorMessage == ''){
+      this.props.onClose();
+    }
   }
-  
+
   renderAlert(){
     if (this.props.errorMessage){
       return (

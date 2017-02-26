@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions';
 
+
 class Signin extends Component {
+
   handleFormSubmit({ email, password }) {
-    // Need to do something to log user in
     this.props.signinUser({ email, password });
+    if(this.props.errorMessage == ''){
+      this.props.onClose();
+    }
   }
 
   renderAlert(){
