@@ -5,7 +5,8 @@ import { Link } from 'react-router';
 
 class Event extends Component {
   render() {
-    if(!this.props.activeEvent) {
+    debugger
+    if(!this.props.activeEvent.title) {
       return <div>Select an event to get started.</div>;
     }else{
       return (
