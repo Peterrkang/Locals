@@ -5,15 +5,15 @@ import { Link } from 'react-router';
 
 class Event extends Component {
   render() {
-    debugger
+
     if(!this.props.activeEvent.title) {
       return <div>Select an event to get started.</div>;
     }else{
       return (
         <div>
-          <h3>Details for:</h3>
-          <div>Title: {this.props.activeEvent.title}</div>
-          <div>Description: {this.props.activeEvent.description}</div>
+          <div><h3>{this.props.activeEvent.title}</h3></div>
+          <div>{this.props.activeEvent.description}</div>
+          <div>{this.props.activeEvent.address}</div>
           <Link to={`/events/${this.props.activeEvent.id}/chatroom`} params={{id:this.props.activeEvent.id}}>
             Chat With Locals
           </Link>
