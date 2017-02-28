@@ -21,6 +21,7 @@ class GoogleMaps extends Component{
         const event = this.state.markers[marker]
         if (event === targetMarker) {
           if(event.showInfo == false){
+            this.props.onClickEvent(event)
             return {
               ...event,
               showInfo: true
