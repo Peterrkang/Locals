@@ -46,7 +46,13 @@ class Events extends Component {
   }
 
   render(){
-    debugger
+    if(!this.state.lat || !this.state.lng){
+      return <div> Loading Current Location....</div>;
+    }
+    if(!this.props.events){
+      return <div> Loading Events Near You... </div>;
+    }
+    
     return(
       <div>
         <div id="map">
