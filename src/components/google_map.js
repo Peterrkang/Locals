@@ -3,7 +3,7 @@ import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-map
 import { Link } from 'react-router';
 
 
-class GoogleMaps extends Component{
+export default class GoogleMaps extends Component{
 
   constructor(props){
     super(props);
@@ -77,5 +77,3 @@ class GoogleMaps extends Component{
     }
 
 }
-
-export default GoogleMaps;

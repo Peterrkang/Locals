@@ -7,9 +7,6 @@ class Signin extends Component {
 
   handleFormSubmit({ email, password }) {
     this.props.signinUser({ email, password });
-    if(this.props.errorMessage == ''){
-      this.props.onClose();
-    }
   }
 
   renderAlert(){
@@ -26,7 +23,7 @@ class Signin extends Component {
     const { handleSubmit, fields: { email, password }} = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form className="form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
           <label>Email:</label>
           <input {...email} className="form-control" />
@@ -36,7 +33,9 @@ class Signin extends Component {
           <input {...password} type="password" className="form-control" />
         </fieldset>
         { this.renderAlert() }
-        <button action="submit" className="btn btn-primary">Sign in</button>
+        <div className="centered">
+          <button action="submit" className="btn btn-primary">Sign in</button>
+        </div>
       </form>
     );
   }

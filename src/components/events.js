@@ -16,7 +16,6 @@ class Events extends Component {
 
   componentWillMount(){
     this.props.fetchEvents();
-
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(this.onPositionReceived.bind(this));
     }
@@ -40,21 +39,12 @@ class Events extends Component {
     })
   }
 
-
   onClickEvent(event){
-    debugger
     this.props.selectEvent(event)
   }
 
-
   render(){
-    if(!this.state.lat || !this.state.lng){
-      return <div> Loading Current Location....</div>;
-    }
-    if(!this.props.events){
-      return <div> Loading Events Near You... </div>;
-    }
-
+    
     return(
       <div>
         <div id="map">

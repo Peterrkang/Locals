@@ -21,31 +21,29 @@ export default class Home extends Component{
     let newUser;
     if(this.state.account == true){
       newUser = (
-        <div>
+        <div className="account">
           <SignIn />
-          <h6>Don't have an Account?
-            <a href="#" onClick={this.accountState.bind(this)}>Sign Up</a>
-          </h6>
+          <h5 className="centered">Don't have an Account?
+            <a href="#" onClick={this.accountState.bind(this)}> Sign Up</a>
+          </h5>
         </div>
       )
     }else{
       newUser = (
-          <div>
+          <div className="account">
             <SignUp />
-            <h6>Have an Account?
-              <a href="#" onClick={this.accountState.bind(this)}>Sign In</a>
-            </h6>
+            <h5 className="centered">Have an Account?
+              <a href="#" onClick={this.accountState.bind(this)}> Sign In</a>
+            </h5>
           </div>
       )
     }
 
     return(
-      <div id="column">
-        <div>
+      <div>
           <h2>Locals</h2>
-          <div id="background" />
-        </div>
-        {newUser}
+          <div id="info" />
+          {newUser}
       </div>
     );
   }
