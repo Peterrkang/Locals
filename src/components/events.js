@@ -16,9 +16,10 @@ class Events extends Component {
 
   componentWillMount(){
     this.props.fetchEvents();
-
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(this.onPositionReceived.bind(this));
+    }else{
+      alert('No Geolocation Support')
     }
   }
 
@@ -30,7 +31,7 @@ class Events extends Component {
     return Object.keys(this.props.events).map((event)=>{
       return(
         <li
-          onClick={() => this.props.selectEvent(this.props.events[event])}
+          onClick={()=>this.onClickEvent(this.props.events[event])}
           key={this.props.events[event].id}
           className="list-group-item"
         >
@@ -40,6 +41,10 @@ class Events extends Component {
     })
   }
 
+  onClickEvent(event){
+    this.props.selectEvent(event)
+  }
+
   render(){
     if(!this.state.lat || !this.state.lng){
       return <div> Loading Current Location....</div>;
@@ -47,11 +52,12 @@ class Events extends Component {
     if(!this.props.events){
       return <div> Loading Events Near You... </div>;
     }
-
+    
     return(
       <div>
         <div id="map">
           <GoogleMaps
+            onClickEvent={this.onClickEvent.bind(this)}
             lat={this.state.lat}
             lng={this.state.lng}
             markers={this.props.events}

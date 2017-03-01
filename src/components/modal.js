@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { store } from '../index';
 import { Provider } from 'react-redux';
 import SignIn from './auth/signin';
-import SignUp from './auth/signup';
 import EventForm from './event_form';
 import { connect } from 'react-redux';
 
@@ -36,23 +35,10 @@ class Modal extends Component {
   }
 
   _render() {
-    let specificModal;
-    if(this.props.modal == 1){
-      specificModal = (
-        <EventForm onClose={this.props.onClose}/>
-      )
-    }else if(this.props.modal == 2){
-      specificModal = (
-        <SignIn onClose={this.props.onClose} />
-      )
-    }else if(this.props.modal == 3){
-      specificModal = (
-        <SignUp onClose={this.props.onClose}/>
-      )
-    }
+
     ReactDOM.render(
       <Provider store={store}>
-        <div>{specificModal}</div>
+        <div><EventForm onClose={this.props.onClose}/></div>
       </Provider>,
       this.modalTarget
     );

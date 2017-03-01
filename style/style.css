@@ -9,11 +9,6 @@
   position: relative;
 }
 
-#background {
-  background-image: url("../images/frontpage.jpg");
-  height: 500px;
-  width: 1000px;
-}
 
 body .modal {
   position: fixed;
@@ -28,4 +23,30 @@ body .modal {
   outline: none;
   padding: 20px;
   display: block;
+}
+
+#info {
+  background-image: url("../images/frontpage.jpg");
+  height: 450px;
+  width: 400px;
+  display: block;
+  float: left;
+}
+
+.account {
+  border: 1px solid #ccc;
+  height: 450px;
+  width: 400px;
+  display: block;
+  float: left;
+}
+
+.centered {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+
+.form {
+  margin-top: 50px;
 }

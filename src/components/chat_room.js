@@ -25,6 +25,9 @@ class ChatRoom extends Component{
   }
 
   renderChat(){
+    if(!this.props.messages){
+      return <div>Start Chatting</div>
+    }
     return Object.keys(this.props.messages).map((message)=>{
       const date = new Date(this.props.messages[message].created_at)
       return(
@@ -37,19 +40,17 @@ class ChatRoom extends Component{
 
 
   render(){
-    if(!this.props.messages){
-      return <div>Loading Chat...</div>
-    }
+
     return(
       <div>
+        <h3>{this.props.title}</h3>
         {this.renderChat()}
-
         <form onSubmit={this.onFormSubmit.bind(this)} className="input-group">
-          <input className="form-control"
-            value={this.state.message}
-            onChange={this.onInputChange.bind(this)}
-           />
-          <button type="submit" className="btn btn-secondary">Send</button>
+            <input className="form-control"
+              value={this.state.message}
+              onChange={this.onInputChange.bind(this)}
+             />
+            <button type="submit" className="btn btn-secondary">Send</button>
         </form>
       </div>
     );
@@ -59,7 +60,8 @@ class ChatRoom extends Component{
 function mapStateToProps(state){
   return {
     messages: state.chat.messages,
-    currentUser: state.chat.user
+    currentUser: state.chat.user,
+    title: state.chat.title
   };
 }
 

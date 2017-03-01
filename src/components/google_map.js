@@ -3,7 +3,7 @@ import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-map
 import { Link } from 'react-router';
 
 
-class GoogleMaps extends Component{
+export default class GoogleMaps extends Component{
 
   constructor(props){
     super(props);
@@ -21,6 +21,7 @@ class GoogleMaps extends Component{
         const event = this.state.markers[marker]
         if (event === targetMarker) {
           if(event.showInfo == false){
+            this.props.onClickEvent(event)
             return {
               ...event,
               showInfo: true
@@ -66,7 +67,7 @@ class GoogleMaps extends Component{
           googleMapElement={
             <GoogleMap
               defaultZoom={12}
-              defaultCenter={{lat: lat, lng: lng}}
+              defaultCenter={{lat: 33.8583, lng: 118.0648}}
             >
               { this.renderMarkers() }
             </GoogleMap>
@@ -76,5 +77,3 @@ class GoogleMaps extends Component{
     }
 
 }
-
-export default GoogleMaps;

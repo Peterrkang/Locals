@@ -12,7 +12,7 @@ class EventForm extends Component {
   }
 
   handleFormSubmit(formProps){
-    this.props.createEvent(formProps, this.state.location)
+    this.props.createEvent(formProps, this.state.location);
     this.props.onClose();
   }
 

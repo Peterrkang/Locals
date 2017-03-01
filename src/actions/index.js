@@ -34,6 +34,7 @@ export function signinUser({ email, password }) {
 
 export function signoutUser() {
   localStorage.removeItem('token');
+  browserHistory.push('/');
   return { type: UNAUTH_USER };
 }
 
@@ -67,7 +68,10 @@ export function fetchEvents(){
           type: FETCH_EVENTS,
           payload: response.data
         });
-    });
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }
 
@@ -79,7 +83,7 @@ export function createEvent({title, address, description}, {lat, lng}){
         browserHistory.push('/events');
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       })
   }
 }
@@ -99,7 +103,10 @@ export function fetchChatRoom(id){
           type: FETCH_CHATROOM,
           payload: response.data
         });
-    });
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }
 
@@ -111,7 +118,10 @@ export function addMessage({message, id, user}){
           type: ADD_MESSAGE,
           payload: { message, user, id }
         });
-    });
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 }
 
