@@ -16,13 +16,7 @@ class Header extends Component {
 
   open(event){
     const target = event.target.text
-    if(target == 'Create Event'){
-      this.props.openModal(1);
-    }else if(target == 'Sign In'){
-      this.props.openModal(2);
-    }else if(target == 'Sign Up'){
-      this.props.openModal(3);
-    }
+    this.props.openModal(1);
     this.setState({ showModal: true });
   }
 
@@ -34,22 +28,13 @@ class Header extends Component {
     if(this.props.authenticated){
       return[
         <li className="nav-item" key={1}>
-          <Link to="/signout" className="nav-link">Sign Out</Link>
+          <Link to="/events" className="navbar-brand">LocaLs</Link>
         </li>,
         <li className="nav-item" key={2}>
-          <Link to="/events" className="nav-link">Events</Link>
+          <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} />
         </li>,
         <li className="nav-item" key={3}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Create Event</a>
-        </li>
-      ];
-    }else{
-      return [
-        <li className="nav-item" key={1}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Sign In</a>
-        </li>,
-        <li className="nav-item" key={2}>
-          <a href="#" className="nav-link" onClick={this.open.bind(this)}>Sign Up</a>
+          <Link to="/signout" className="glyphicon glyphicon-off" />
         </li>
       ];
     }
@@ -69,7 +54,6 @@ class Header extends Component {
       return(
         <div>
           <nav className="navbar navbar-light">
-            <Link to="/" className="navbar-brand">LocaLs</Link>
             <ul className="nav navbar-nav">
               {this.renderLinks()}
             </ul>
