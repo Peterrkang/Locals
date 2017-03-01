@@ -10,13 +10,13 @@ import {
   FETCH_CHATROOM,
   ADD_MESSAGE,
   OPEN_MODAL
- } from './type'
+} from './type';
 
 
 const ROOT_URL = 'http://localhost:3000';
-const TOKEN_CONFIG = {
+let TOKEN_CONFIG = {
   headers: { Authorization: localStorage.getItem('token') }
-};
+};;
 
 export function signinUser({ email, password }) {
   return function(dispatch){
@@ -24,6 +24,9 @@ export function signinUser({ email, password }) {
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
+        TOKEN_CONFIG = {
+          headers: { Authorization: localStorage.getItem('token') }
+        };
         browserHistory.push('/events');
       })
       .catch(()=> {
@@ -70,7 +73,7 @@ export function fetchEvents(){
         });
     })
     .catch(error => {
-      console.log(error);
+      dispatch(authError("Error With Fetching Events"))
     })
   }
 }
@@ -83,7 +86,7 @@ export function createEvent({title, address, description}, {lat, lng}){
         browserHistory.push('/events');
       })
       .catch(error => {
-        console.log(error);
+        dispatch(authError("Error With Creating Events"))
       })
   }
 }
@@ -105,7 +108,7 @@ export function fetchChatRoom(id){
         });
     })
     .catch(error => {
-      console.log(error);
+      dispatch(authError(error.response.data.error))
     })
   }
 }
@@ -120,7 +123,7 @@ export function addMessage({message, id, user}){
         });
     })
     .catch(error => {
-      console.log(error);
+      dispatch(authError(error.response.data.error))
     })
   }
 }

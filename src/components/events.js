@@ -52,7 +52,7 @@ class Events extends Component {
     if(!this.props.events){
       return <div> Loading Events Near You... </div>;
     }
-    
+
     return(
       <div>
         <div id="map">
