@@ -18,6 +18,8 @@ class Events extends Component {
     this.props.fetchEvents();
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(this.onPositionReceived.bind(this));
+    }else{
+      alert('No Geolocation Support')
     }
   }
 
@@ -44,7 +46,7 @@ class Events extends Component {
   }
 
   render(){
-    
+    debugger
     return(
       <div>
         <div id="map">

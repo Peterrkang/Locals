@@ -15,8 +15,7 @@ class Header extends Component {
   }
 
   open(event){
-    const target = event.target.text
-    this.props.openModal(1);
+    this.props.openModal(event);
     this.setState({ showModal: true });
   }
 

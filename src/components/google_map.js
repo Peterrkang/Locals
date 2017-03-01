@@ -67,7 +67,7 @@ export default class GoogleMaps extends Component{
           googleMapElement={
             <GoogleMap
               defaultZoom={12}
-              defaultCenter={{lat: lat, lng: lng}}
+              defaultCenter={{lat: 33.8583, lng: 118.0648}}
             >
               { this.renderMarkers() }
             </GoogleMap>
