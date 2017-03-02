@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import { GoogleMapLoader, GoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import { Link } from 'react-router';
+import _ from 'lodash';
 
 
 export default class GoogleMaps extends Component{
@@ -16,16 +17,29 @@ export default class GoogleMaps extends Component{
   }
 
   onMarkerClick(targetMarker){
-    this.props.onClickEvent(event);
+    this.props.onClickEvent(this.props.markers[targetMarker]);
     this.setState({
       marker: targetMarker
     })
   }
 
 
+
+
   renderMarkers(){
-    return Object.keys(this.props.markers).map((marker) => {
-      const event = this.props.markers[marker];
+    let events = {};
+    if(this.props.onSearch.length > 0){
+      Object.keys(this.props.markers).map((marker) => {
+        if(this.props.markers[marker].title.toLowerCase().includes(this.props.onSearch)){
+          events[marker] = this.props.markers[marker]
+        }
+      });
+    }else{
+      events = this.props.markers
+    }
+
+    return Object.keys(events).map((marker) => {
+      const event = events[marker];
           return (
             <Marker
               key={marker}

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import Modal from './modal';
-import { openModal } from '../actions';
-
+import * as actions from '../actions';
+import SearchBar from './search_bar';
 
 
 
@@ -23,6 +23,10 @@ class Header extends Component {
     this.setState({ showModal: false });
   }
 
+  eventSearch(term) {
+    this.props.searchEvents(term);
+  }
+
   renderLinks(){
     if(this.props.authenticated){
       return[
@@ -33,6 +37,9 @@ class Header extends Component {
           <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} />
         </li>,
         <li className="nav-item" key={3}>
+          <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+        </li>,
+        <li className="nav-item" key={4}>
           <Link to="/signout" className="glyphicon glyphicon-off" />
         </li>
       ];
@@ -52,7 +59,7 @@ class Header extends Component {
       }
       return(
         <div>
-          <nav className="navbar navbar-light">
+          <nav className="navbar responsive">
             <ul className="nav navbar-nav">
               {this.renderLinks()}
             </ul>
@@ -70,4 +77,4 @@ function mapStateToProps(state){
 }
 
 
-export default connect(mapStateToProps, { openModal })(Header);
+export default connect(mapStateToProps, actions)(Header);

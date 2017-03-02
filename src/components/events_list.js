@@ -4,14 +4,25 @@ import { connect } from 'react-redux';
 export default class EventsList extends Component {
 
   renderEvents(){
-    return Object.keys(this.props.events).map((event)=>{
+    let events = {};
+    if(this.props.onSearch.length > 0){
+      Object.keys(this.props.events).map((event) => {
+        if(this.props.events[event].title.toLowerCase().includes(this.props.onSearch)){
+          events[event] = this.props.events[event]
+        }
+      });
+    }else{
+      events = this.props.events
+    }
+
+    return Object.keys(events).map((event)=>{
       return(
         <li
-          onClick={()=>this.props.onClickEvent(this.props.events[event])}
+          onClick={()=>this.props.onClickEvent(events[event])}
           key={event}
           className="list-group-item"
         >
-          {this.props.events[event].title}
+          {events[event].title}
         </li>
       );
     })

@@ -30,7 +30,7 @@ class Events extends Component {
   }
 
   onClickEvent(event){
-    this.props.selectEvent(event)
+    this.props.selectEvent(event);
   }
 
 
@@ -50,11 +50,13 @@ class Events extends Component {
             lat={this.state.lat}
             lng={this.state.lng}
             markers={this.props.events}
+            onSearch={this.props.search}
           />
         </div>
         <EventsList
           onClickEvent={this.onClickEvent.bind(this)}
           events= {this.props.events}
+          onSearch={this.props.search}
         />
         <Event />
       </div>
@@ -64,7 +66,8 @@ class Events extends Component {
 
 function mapStateToProps(state){
   return{
-    events: state.events
+    events: state.events,
+    search: state.search
   };
 }
 

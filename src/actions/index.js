@@ -9,7 +9,8 @@ import {
   SELECTED_EVENT,
   FETCH_CHATROOM,
   ADD_MESSAGE,
-  OPEN_MODAL
+  OPEN_MODAL,
+  SEARCH_EVENTS
 } from './type';
 
 
@@ -132,5 +133,12 @@ export function openModal(modal){
   return{
     type: OPEN_MODAL,
     payload: modal
+  }
+}
+
+export function searchEvents(term){
+  return{
+    type: SEARCH_EVENTS,
+    payload: term
   }
 }

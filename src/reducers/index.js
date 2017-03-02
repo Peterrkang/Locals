@@ -5,6 +5,7 @@ import eventReducer from './event_reducer';
 import activeReducer from './active_reducer';
 import chatReducer from './chat_reducer';
 import modalReducer from './modal_reducer';
+import searchReducer from './search_reducer';
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   events: eventReducer,
   activeEvent: activeReducer,
   chat: chatReducer,
-  modal: modalReducer
+  modal: modalReducer,
+  search: searchReducer
 });
 
 export default rootReducer;
