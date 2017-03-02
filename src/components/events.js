@@ -43,10 +43,10 @@ class Events extends Component {
     }
 
     return(
-      <div className="container">
+      <div>
         <div className="container-fluid" id="map">
           <GoogleMaps
-            containerElement={<div style={{height: `100%`}}/>}
+            id="googleMaps"
             onClickEvent={this.onClickEvent.bind(this)}
             lat={this.state.lat}
             lng={this.state.lng}

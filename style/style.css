@@ -6,15 +6,9 @@
   width: 300px;
 }
 
-/*#map {
-  margin-right: 50px;
-  margin-left: 50px;
+#map {
   height: 500px;
-  width: 1000px;
-  top: 100%;
-  position: relative;
-  text-align: center;
-}*/
+}
 
 #events{
   text-align: center;
@@ -27,6 +21,10 @@
 #event{
   width: 500px;
   right: 150px;
+}
+#googleMaps {
+  width: 100%;
+  height: 100%;
 }
 
 body .modal {
