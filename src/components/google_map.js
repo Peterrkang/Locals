@@ -11,30 +11,14 @@ export default class GoogleMaps extends Component{
     this.state = {
       lat: this.props.lat,
       lng: this.props.lng,
-      markers: this.props.markers
+      marker: ''
     };
   }
 
   onMarkerClick(targetMarker){
+    this.props.onClickEvent(event);
     this.setState({
-      markers: Object.keys(this.props.markers).map((marker) => {
-        const event = this.props.markers[marker]
-        if (event === targetMarker) {
-          if(event.showInfo == false){
-            this.props.onClickEvent(event)
-            return {
-              ...event,
-              showInfo: true
-            };
-          }else{
-            return {
-              ...event,
-              showInfo: false
-            };
-          }
-        }
-        return event;
-      })
+      marker: targetMarker
     })
   }
 
@@ -46,9 +30,9 @@ export default class GoogleMaps extends Component{
             <Marker
               key={marker}
               position={new google.maps.LatLng(parseFloat(event.lat), parseFloat(event.lng))}
-              onClick={() => this.onMarkerClick(event)}
+              onClick={() => this.onMarkerClick(marker)}
             >
-              {event.showInfo && (
+              {this.state.marker === marker && (
                 <InfoWindow>
                   <div>
                     <strong>{event.title}</strong>
