@@ -21,7 +21,7 @@ export default class Home extends Component{
     let newUser;
     if(this.state.account == true){
       newUser = (
-        <div className="account">
+        <div className="col-lg-6" id="account">
           <SignIn />
           <h5 className="centered">Don't have an Account?
             <a href="#" onClick={this.accountState.bind(this)}> Sign Up</a>
@@ -30,7 +30,7 @@ export default class Home extends Component{
       )
     }else{
       newUser = (
-          <div className="account">
+          <div className="col-lg-6" id="account">
             <SignUp />
             <h5 className="centered">Have an Account?
               <a href="#" onClick={this.accountState.bind(this)}> Sign In</a>
@@ -42,8 +42,12 @@ export default class Home extends Component{
     return(
       <div>
           <h2>Locals</h2>
-          <div id="info" />
-          {newUser}
+          <div className="container-fluid" id="home">
+            <div className="row">
+              <div className="col-lg-6" id="info" />
+              {newUser}
+            </div>
+          </div>
       </div>
     );
   }

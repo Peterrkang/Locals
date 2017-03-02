@@ -17,7 +17,6 @@
   text-align: center;
 }
 
-
 #googleMaps {
   width: 100%;
   height: 100%;
@@ -43,16 +42,12 @@ body .modal {
   background-image: url("../images/frontpage.jpg");
   height: 450px;
   width: 400px;
-  display: block;
-  float: left;
 }
 
-.account {
+#account {
   border: 1px solid #ccc;
   height: 450px;
   width: 400px;
-  display: block;
-  float: left;
 }
 
 .centered {
@@ -62,4 +57,13 @@ body .modal {
 
 .form {
   margin-top: 50px;
+  margin-right: 50px;
+  margin-left: 50px;
+}
+
+#home {
+  margin-top: 100px;
+  margin-right: 100px;
+  margin-left: 200px;
+  margin-bottom: 100px;
 }
