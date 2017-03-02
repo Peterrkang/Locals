@@ -17,8 +17,8 @@ export default class GoogleMaps extends Component{
 
   onMarkerClick(targetMarker){
     this.setState({
-      markers: Object.keys(this.state.markers).map((marker) => {
-        const event = this.state.markers[marker]
+      markers: Object.keys(this.props.markers).map((marker) => {
+        const event = this.props.markers[marker]
         if (event === targetMarker) {
           if(event.showInfo == false){
             this.props.onClickEvent(event)
@@ -37,14 +37,14 @@ export default class GoogleMaps extends Component{
       })
     })
   }
-  
+
 
   renderMarkers(){
-    return Object.keys(this.state.markers).map((marker) => {
-      const event = this.state.markers[marker];
+    return Object.keys(this.props.markers).map((marker) => {
+      const event = this.props.markers[marker];
           return (
             <Marker
-              key={event.id}
+              key={marker}
               position={new google.maps.LatLng(parseFloat(event.lat), parseFloat(event.lng))}
               onClick={() => this.onMarkerClick(event)}
             >

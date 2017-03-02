@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  GoogleMaps from './google_map';
 
 export default class EventsList extends Component {
 
@@ -8,8 +7,8 @@ export default class EventsList extends Component {
     return Object.keys(this.props.events).map((event)=>{
       return(
         <li
-          onClick={()=>this.onClickEvent(this.props.events[event])}
-          key={this.props.events[event].id}
+          onClick={()=>this.props.onClickEvent(this.props.events[event])}
+          key={event}
           className="list-group-item"
         >
           {this.props.events[event].title}

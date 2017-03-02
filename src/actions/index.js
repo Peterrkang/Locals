@@ -5,7 +5,7 @@ import {
   UNAUTH_USER,
   AUTH_ERROR,
   FETCH_EVENTS,
-  NEW_EVENTS,
+  NEW_EVENT,
   SELECTED_EVENT,
   FETCH_CHATROOM,
   ADD_MESSAGE,
@@ -73,7 +73,7 @@ export function fetchEvents(){
         });
     })
     .catch(error => {
-      dispatch(authError("Error With Fetching Events"))
+      console.log(error)
     })
   }
 }
@@ -82,11 +82,11 @@ export function createEvent({title, address, description}, {lat, lng}){
   return function(dispatch){
     axios.post(`${ROOT_URL}/events`, { title, address, description, lat, lng }, TOKEN_CONFIG)
       .then(response => {
-        dispatch({ type: NEW_EVENTS, payload: { title, address, description, lat, lng } });
+        dispatch({ type: NEW_EVENT, payload: { title, address, description, lat, lng } });
         browserHistory.push('/events');
       })
       .catch(error => {
-        dispatch(authError("Error With Creating Events"))
+        console.log(error)
       })
   }
 }
@@ -108,7 +108,7 @@ export function fetchChatRoom(id){
         });
     })
     .catch(error => {
-      dispatch(authError(error.response.data.error))
+      console.log(error)
     })
   }
 }
@@ -123,7 +123,7 @@ export function addMessage({message, id, user}){
         });
     })
     .catch(error => {
-      dispatch(authError(error.response.data.error))
+      console.log(error)
     })
   }
 }

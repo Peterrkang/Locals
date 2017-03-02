@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import {
-  NEW_EVENTS,
+  NEW_EVENT,
   FETCH_EVENTS,
   FETCH_EVENT,
   DELETE_EVENT
@@ -13,7 +13,7 @@ export default function(state = INITIAL_STATE, action){
     case FETCH_EVENTS:
       const newPosts = _.mapKeys(action.payload, 'id')
       return {...state, ...newPosts};
-    case NEW_EVENTS:
+    case NEW_EVENT:
       return {...state, error: action.payload };
     case FETCH_EVENT:
       return {...state , [action.payload.id]: action.payload };

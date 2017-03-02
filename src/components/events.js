@@ -33,6 +33,7 @@ class Events extends Component {
     this.props.selectEvent(event)
   }
 
+
   render(){
     if(!this.state.lat || !this.state.lng){
       return <div> Loading Current Location....</div>;
