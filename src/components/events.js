@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import  GoogleMaps from './google_map';
+import GoogleMaps from './google_map';
 import Event from '../components/event';
+import EventsList from './events_list';
+import _ from 'lodash';
 
 class Events extends Component {
 
@@ -27,20 +29,6 @@ class Events extends Component {
     this.setState({ lat: position.coords.latitude, lng: position.coords.longitude });
   }
 
-  renderEvents() {
-    return Object.keys(this.props.events).map((event)=>{
-      return(
-        <li
-          onClick={()=>this.onClickEvent(this.props.events[event])}
-          key={this.props.events[event].id}
-          className="list-group-item"
-        >
-          {this.props.events[event].title}
-        </li>
-      );
-    })
-  }
-
   onClickEvent(event){
     this.props.selectEvent(event)
   }
@@ -63,9 +51,10 @@ class Events extends Component {
             markers={this.props.events}
           />
         </div>
-        <ul className="list-group col-sm-4">
-          {this.renderEvents()}
-        </ul>
+        <EventsList
+          onClickEvent={this.onClickEvent.bind(this)}
+          events= {this.props.events}
+        />
         <Event />
       </div>
     );

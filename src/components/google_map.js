@@ -37,6 +37,7 @@ export default class GoogleMaps extends Component{
       })
     })
   }
+  
 
   renderMarkers(){
     return Object.keys(this.state.markers).map((marker) => {
