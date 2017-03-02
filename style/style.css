@@ -2,20 +2,39 @@
   color: red
 }
 
-#map {
-  height: 50vh;
-  width: 50vw;
-  top: 50%;
-  position: relative;
+.search-bar {
+  width: 300px;
 }
 
+/*#map {
+  margin-right: 50px;
+  margin-left: 50px;
+  height: 500px;
+  width: 1000px;
+  top: 100%;
+  position: relative;
+  text-align: center;
+}*/
+
+#events{
+  text-align: center;
+}
+#list {
+  width: 500px;
+  left: 150px;
+  text-align: center;
+}
+#event{
+  width: 500px;
+  right: 150px;
+}
 
 body .modal {
   position: fixed;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
+  top: 100px;
+  left: 300px;
+  right: 300px;
+  bottom: 500px;
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;
@@ -46,7 +65,11 @@ body .modal {
   margin-bottom: 100px;
 }
 
-
 .form {
   margin-top: 50px;
+}
+
+.nav-center {
+    margin:0;
+    float:none;
 }

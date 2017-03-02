@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
 import Header from './header';
+import { connect } from 'react-redux';
 
 
-
-export default class App extends Component {
+class App extends Component {
   render() {
+    let header;
+    if(this.props.authenticated){
+      header = (<Header />)
+    }
+
     return (
       <div>
-        <Header />
+        {header}
         {this.props.children}
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+  return{
+    authenticated: state.auth.authenticated
+  };
+}
+
+export default connect(mapStateToProps, null)(App)

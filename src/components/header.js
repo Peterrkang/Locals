@@ -28,46 +28,49 @@ class Header extends Component {
   }
 
   renderLinks(){
-    if(this.props.authenticated){
-      return[
-        <li className="nav-item" key={1}>
-          <Link to="/events" className="navbar-brand">LocaLs</Link>
-        </li>,
-        <li className="nav-item" key={2}>
-          <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} />
-        </li>,
-        <li className="nav-item" key={3}>
-          <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
-        </li>,
-        <li className="nav-item" key={4}>
-          <Link to="/signout" className="glyphicon glyphicon-off" />
-        </li>
-      ];
-    }
-  }
-
-  render(){
-      let modal;
-      if(this.state.showModal == true){
-        modal = (
-          <Modal onClose={this.close.bind(this)} />
-        )
-      }else{
-        modal = (
-          <noscript />
-        )
-      }
-      return(
-        <div>
-          <nav className="navbar responsive">
-            <ul className="nav navbar-nav">
-              {this.renderLinks()}
-            </ul>
+      if(this.props.authenticated){
+        return(
+          <nav className="navbar navbar-default">
+            <div className="container-fluid">
+              <ul className="nav navbar-nav">
+                <li className="nav-item" key={1}>
+                  <Link to="/events" className="navbar-brand">LocaLs</Link>
+                </li>
+                <li className="nav-item" key={2}>
+                  <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} />
+                </li>
+                <li className="navbar-form" key={3}>
+                  <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+                </li>
+                <li className="nav-item" key={4}>
+                  <Link to="/signout" className="glyphicon glyphicon-off" />
+                </li>
+              </ul>
+            </div>
           </nav>
-          {modal}
-        </div>
-      );
+        );
+      }
     }
+
+    render(){
+        let modal;
+        if(this.state.showModal == true){
+          modal = (
+            <Modal onClose={this.close.bind(this)} />
+          )
+        }else{
+          modal = (
+            <noscript />
+          )
+        }
+        return(
+          <div>
+            {this.renderLinks()}
+            {modal}
+          </div>
+        );
+      }
+
 }
 
 function mapStateToProps(state){
