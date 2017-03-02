@@ -38,7 +38,7 @@ class Modal extends Component {
 
     ReactDOM.render(
       <Provider store={store}>
-        <div><EventForm onClose={this.props.onClose}/></div>
+        <div><EventForm /></div>
       </Provider>,
       this.modalTarget
     );

@@ -62,7 +62,6 @@ export default class GoogleMaps extends Component{
       const { lat, lng } = this.state;
       return(
         <GoogleMapLoader
-          containerElement={<div style={{height: '100%'}} />}
           googleMapElement={
             <GoogleMap
               defaultZoom={12}

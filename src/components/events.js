@@ -43,9 +43,10 @@ class Events extends Component {
     }
 
     return(
-      <div>
-        <div id="map">
+      <div className="container">
+        <div className="container-fluid" id="map">
           <GoogleMaps
+            containerElement={<div style={{height: `100%`}}/>}
             onClickEvent={this.onClickEvent.bind(this)}
             lat={this.state.lat}
             lng={this.state.lng}
@@ -53,12 +54,18 @@ class Events extends Component {
             onSearch={this.props.search}
           />
         </div>
-        <EventsList
-          onClickEvent={this.onClickEvent.bind(this)}
-          events= {this.props.events}
-          onSearch={this.props.search}
-        />
-        <Event />
+        <div clasName="container-fluid" id="events">
+          <EventsList
+            id="list"
+            onClickEvent={this.onClickEvent.bind(this)}
+            events= {this.props.events}
+            onSearch={this.props.search}
+          />
+          <Event
+            id="event"
+            onSearch={this.props.search}
+          />
+        </div>
       </div>
     );
   }
