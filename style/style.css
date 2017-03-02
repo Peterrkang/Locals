@@ -10,22 +10,19 @@
   height: 500px;
 }
 
-#events{
+#events {
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
   text-align: center;
 }
-#list {
-  width: 500px;
-  left: 150px;
-  text-align: center;
-}
-#event{
-  width: 500px;
-  right: 150px;
-}
+
+
 #googleMaps {
   width: 100%;
   height: 100%;
 }
+
 
 body .modal {
   position: fixed;
@@ -65,9 +62,4 @@ body .modal {
 
 .form {
   margin-top: 50px;
-}
-
-.nav-center {
-    margin:0;
-    float:none;
 }

@@ -30,9 +30,11 @@ export default class EventsList extends Component {
 
   render(){
     return(
-      <ul className="list-group col-sm-4">
-        {this.renderEvents()}
-      </ul>
+      <div className="col-lg-6">
+        <ul className="list-group">
+          {this.renderEvents()}
+        </ul>
+      </div>
     );
   }
 }

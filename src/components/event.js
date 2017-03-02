@@ -10,10 +10,12 @@ class Event extends Component {
       return <div>Select an event to get started.</div>;
     }else{
       return (
-        <div>
-          <div><h3>{this.props.activeEvent.title}</h3></div>
-          <div>{this.props.activeEvent.description}</div>
-          <div>{this.props.activeEvent.address}</div>
+        <div className="col-lg-6">
+          <h3>{this.props.activeEvent.title}</h3>
+          {this.props.activeEvent.description}
+          <br />
+          {this.props.activeEvent.address}
+          <br />
           <Link to={`/events/${this.props.activeEvent.id}/chatroom`} params={{id:this.props.activeEvent.id}}>
             Chat With Locals
           </Link>
