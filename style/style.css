@@ -67,3 +67,34 @@ body .modal {
   margin-left: 200px;
   margin-bottom: 100px;
 }
+
+#chat {
+  border: none;
+}
+
+.other .msg {
+  text-align: right;
+}
+
+.self .msg {
+  text-align: left;
+}
+
+
+
+time {
+  font-size: 10px;
+}
+
+.msg p {
+  font-size: 15px;
+  margin: 0 0 2px 0;
+  color: black;
+  transition: all .2s ease;
+}
+
+.scrollable-menu {
+  height: auto;
+  max-height: 500px;
+  overflow-x: hidden;
+}

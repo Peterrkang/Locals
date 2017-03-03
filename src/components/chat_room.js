@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchChatRoom, addMessage } from '../actions'
+import Messages from './messages'
 
 class ChatRoom extends Component{
 
@@ -24,34 +25,20 @@ class ChatRoom extends Component{
     this.setState({message: event.target.value })
   }
 
-  renderChat(){
-    if(!this.props.messages){
-      return <div>Start Chatting</div>
-    }
-    return Object.keys(this.props.messages).map((message)=>{
-      const date = new Date(this.props.messages[message].created_at)
-      return(
-        <div key={message}>
-          {this.props.messages[message].user_email}: {this.props.messages[message].content}
-        </div>
-      );
-    });
-  }
-
-
   render(){
-
     return(
-      <div>
-        <h3>{this.props.title}</h3>
-        {this.renderChat()}
-        <form onSubmit={this.onFormSubmit.bind(this)} className="input-group">
+      <div className="container-fluid">
+        <h4>{this.props.title}</h4>
+        <Messages messages={this.props.messages} currentUser={this.props.currentUser}/>
+        <div className="row">
+          <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
             <input className="form-control"
               value={this.state.message}
               onChange={this.onInputChange.bind(this)}
-             />
-            <button type="submit" className="btn btn-secondary">Send</button>
-        </form>
+            />
+          </form>
+        </div>
+
       </div>
     );
   }

@@ -117,7 +117,7 @@ export function fetchChatRoom(id){
 export function addMessage({message, id, user}){
   return function(dispatch) {
     axios.post(`${ROOT_URL}/events/${id}/chatroom`,{ message, id } , TOKEN_CONFIG)
-    .then(() => {
+    .then(response => {
         dispatch({
           type: ADD_MESSAGE,
           payload: { message, user, id }
