@@ -28,13 +28,15 @@ class ChatRoom extends Component{
   render(){
     return(
       <div className="container-fluid">
-        <h4>{this.props.title}</h4>
+        <h3>{this.props.title}</h3>
         <Messages messages={this.props.messages} currentUser={this.props.currentUser}/>
         <div className="row">
           <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
             <input className="form-control"
+              placeholder="..."
               value={this.state.message}
               onChange={this.onInputChange.bind(this)}
+              autoFocus
             />
           </form>
         </div>

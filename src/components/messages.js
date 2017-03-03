@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 
 export default class Messages extends Component {
 
+
   convertTime(date){
     let convertedTime, minutes;
     if(date.getMinutes() < 10){
@@ -19,6 +20,9 @@ export default class Messages extends Component {
   }
 
   renderChat(){
+    if(!this.props.messages){
+      return <div>Start Chatting...</div>;
+    }
     return Object.keys(this.props.messages).map((message)=>{
       let date = new Date(this.props.messages[message].created_at)
       if(this.props.messages[message].user_email == this.props.currentUser){
@@ -51,12 +55,9 @@ export default class Messages extends Component {
 
 
   render(){
-    if(!this.props.messages){
-        return <div>START CHATTING!</div>;
-    }
     return(
       <ol
-        className="list-group scrollable-menu"
+        className="list-group"
         id="chatList"
       >
         {this.renderChat()}

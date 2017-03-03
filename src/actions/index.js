@@ -84,7 +84,6 @@ export function createEvent({title, address, description}, {lat, lng}){
     axios.post(`${ROOT_URL}/events`, { title, address, description, lat, lng }, TOKEN_CONFIG)
       .then(response => {
         dispatch({ type: NEW_EVENT, payload: { title, address, description, lat, lng } });
-        browserHistory.push('/events');
       })
       .catch(error => {
         console.log(error)

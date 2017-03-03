@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 export default class SearchBar extends Component {
 
@@ -10,8 +11,8 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <form className="navbar-form">
-        <input className="search-bar"
+      <form className="form-group">
+        <input className="form-control"
           value = {this.state.term}
           onChange = {event => this.onInputChange(event.target.value)}
           placeholder="Search Events"
@@ -23,6 +24,7 @@ export default class SearchBar extends Component {
   onInputChange(term){
     this.setState({term});
     this.props.onSearchTermChange(term);
+    browserHistory.push('/events');
   }
 
 };

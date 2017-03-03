@@ -33,16 +33,18 @@ class Header extends Component {
           <nav className="navbar navbar-default">
             <div className="container-fluid">
               <ul className="nav navbar-nav">
-                <li className="nav-item" key={1}>
+                <li key={1}>
                   <Link to="/events" className="navbar-brand">LocaLs</Link>
                 </li>
-                <li className="nav-item" key={2}>
+                <li key={2}>
                   <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)}/>
                 </li>
                 <li className="navbar-form" key={3}>
                   <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
                 </li>
-                <li className="nav-item" key={4}>
+              </ul>
+              <ul className="nav navbar-nav pull-right">
+                <li key={4}>
                   <Link to="/signout" className="glyphicon glyphicon-off" />
                 </li>
               </ul>

@@ -2,9 +2,6 @@
   color: red
 }
 
-.search-bar {
-  width: 300px;
-}
 
 #map {
   height: 500px;
@@ -22,13 +19,17 @@
   height: 100%;
 }
 
+#event {
+  position: absolute;
+  top: 50%;
+}
 
 body .modal {
   position: fixed;
-  top: 100px;
-  left: 300px;
-  right: 300px;
-  bottom: 500px;
+  top: 10%;
+  left: 30%;
+  right: 30%;
+  bottom: 30%;
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;
@@ -80,8 +81,6 @@ body .modal {
   text-align: left;
 }
 
-
-
 time {
   font-size: 10px;
 }
@@ -91,10 +90,4 @@ time {
   margin: 0 0 2px 0;
   color: black;
   transition: all .2s ease;
-}
-
-.scrollable-menu {
-  height: auto;
-  max-height: 500px;
-  overflow-x: hidden;
 }
