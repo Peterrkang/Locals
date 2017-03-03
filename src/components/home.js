@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import SignUp from './auth/signup';
 import SignIn from './auth/signin';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
+import { browserHistory } from 'react-router';
 
-export default class Home extends Component{
+class Home extends Component{
+
+  componentWillMount(){
+    if(this.props.authenticated){
+      browserHistory.push('/events');
+    }
+  }
 
   constructor(props){
     super(props);
@@ -52,3 +61,12 @@ export default class Home extends Component{
     );
   }
 }
+
+function mapStateToProps(state){
+  return {
+    authenticated: state.auth.authenticated
+  };
+}
+
+
+export default connect(mapStateToProps, actions)(Home);

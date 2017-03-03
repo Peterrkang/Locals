@@ -15,9 +15,6 @@ export default (
 
   <Route path="/" component={App}>
     <IndexRoute component={Home} />
-    <Route path="signin" component={SignIn} />
-    <Route path="signout" component={SignOut} />
-    <Route path="signup" component={SignUp} />
     <Route path="events" component={RequireAuth(Events)} />
     <Route path="events/new" component={RequireAuth(EventForm)} />
     <Route path="events/:id/chatroom" component={RequireAuth(ChatRoom)} />

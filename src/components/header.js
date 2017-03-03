@@ -37,7 +37,7 @@ class Header extends Component {
                   <Link to="/events" className="navbar-brand">LocaLs</Link>
                 </li>
                 <li className="nav-item" key={2}>
-                  <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} />
+                  <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)}/>
                 </li>
                 <li className="navbar-form" key={3}>
                   <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
