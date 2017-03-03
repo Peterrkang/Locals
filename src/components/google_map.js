@@ -30,7 +30,8 @@ export default class GoogleMaps extends Component{
     let events = {};
     if(this.props.onSearch.length > 0){
       Object.keys(this.props.markers).map((marker) => {
-        if(this.props.markers[marker].title.toLowerCase().includes(this.props.onSearch)){
+        const searchLowerCase = this.props.onSearch.toLowerCase()
+        if(this.props.markers[marker].title.toLowerCase().includes(searchLowerCase) || this.props.markers[marker].description.toLowerCase().includes(searchLowerCase)){
           events[marker] = this.props.markers[marker]
         }
       });

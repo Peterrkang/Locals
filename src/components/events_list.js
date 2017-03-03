@@ -7,7 +7,8 @@ export default class EventsList extends Component {
     let events = {};
     if(this.props.onSearch.length > 0){
       Object.keys(this.props.events).map((event) => {
-        if(this.props.events[event].title.toLowerCase().includes(this.props.onSearch)){
+        const searchLowerCase = this.props.onSearch.toLowerCase()
+        if(this.props.events[event].title.toLowerCase().includes(searchLowerCase) || this.props.events[event].description.toLowerCase().includes(searchLowerCase) ){
           events[event] = this.props.events[event]
         }
       });
