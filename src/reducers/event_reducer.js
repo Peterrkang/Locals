@@ -14,7 +14,8 @@ export default function(state = INITIAL_STATE, action){
       const newPosts = _.mapKeys(action.payload, 'id')
       return {...state, ...newPosts};
     case NEW_EVENT:
-      return {...state, error: action.payload };
+      const id = parseInt(Object.keys(state).pop())+1
+      return {...state, [id]: action.payload };
     case FETCH_EVENT:
       return {...state , [action.payload.id]: action.payload };
     case DELETE_EVENT:

@@ -48,6 +48,9 @@ export function signupUser({ email, password }){
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);
+        TOKEN_CONFIG = {
+          headers: { Authorization: localStorage.getItem('token') }
+        };
         browserHistory.push('/events');
       })
       .catch(error => {
