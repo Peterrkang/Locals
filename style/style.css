@@ -29,7 +29,7 @@ body .modal {
   top: 10%;
   left: 30%;
   right: 30%;
-  bottom: 30%;
+  bottom: 50%;
   border: 1px solid #ccc;
   background: #fff;
   overflow: auto;
@@ -90,4 +90,20 @@ time {
   margin: 0 0 2px 0;
   color: black;
   transition: all .2s ease;
+}
+
+
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.menu-scroll {
+  overflow-y: scroll;
+  max-height: 200px;
 }
