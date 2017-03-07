@@ -17,22 +17,21 @@ export default class GoogleMaps extends Component{
   }
 
   onMarkerClick(targetMarker){
-    this.props.onClickEvent(this.props.markers[targetMarker]);
+    let res = {};
+    res[targetMarker] = this.props.markers[targetMarker];
+    this.props.onClickEvent(res);
     this.setState({
       marker: targetMarker
     })
   }
 
-
-
-
   renderMarkers(){
     let events = {};
     if(this.props.onSearch.length > 0){
       Object.keys(this.props.markers).map((marker) => {
-        const searchLowerCase = this.props.onSearch.toLowerCase()
+        const searchLowerCase = this.props.onSearch.toLowerCase();
         if(this.props.markers[marker].title.toLowerCase().includes(searchLowerCase) || this.props.markers[marker].description.toLowerCase().includes(searchLowerCase)){
-          events[marker] = this.props.markers[marker]
+          events[marker] = this.props.markers[marker];
         }
       });
     }else{
@@ -41,21 +40,21 @@ export default class GoogleMaps extends Component{
 
     return Object.keys(events).map((marker) => {
       const event = events[marker];
-          return (
-            <Marker
-              key={marker}
-              position={new google.maps.LatLng(parseFloat(event.lat), parseFloat(event.lng))}
-              onClick={() => this.onMarkerClick(marker)}
-            >
-              {this.state.marker === marker && (
-                <InfoWindow>
-                  <div>
-                    <strong>{event.title}</strong>
-                  </div>
-                </InfoWindow>
-              )}
-            </Marker>
-          );
+        return (
+          <Marker
+            key={marker}
+            position={new google.maps.LatLng(parseFloat(event.lat), parseFloat(event.lng))}
+            onClick={() => this.onMarkerClick(marker)}
+          >
+            {this.state.marker === marker && (
+              <InfoWindow>
+                <div>
+                  <strong>{event.title}</strong>
+                </div>
+              </InfoWindow>
+            )}
+          </Marker>
+        );
       })
     }
 

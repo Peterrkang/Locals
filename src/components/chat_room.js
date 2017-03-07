@@ -14,7 +14,6 @@ class ChatRoom extends Component{
     this.props.fetchChatRoom(this.props.params.id);
   }
 
-
   onFormSubmit(event){
     const chat = { message: this.state.message, id: this.props.params.id, user: this.props.currentUser }
     this.props.addMessage(chat);

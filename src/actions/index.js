@@ -14,10 +14,10 @@ import {
 } from './type';
 
 
-const ROOT_URL = 'https://locals-server.herokuapp.com/';
+const ROOT_URL = 'http://localhost:3000';
 let TOKEN_CONFIG = {
   headers: { Authorization: localStorage.getItem('token') }
-};;
+};
 
 export function signinUser({ email, password }) {
   return function(dispatch){
@@ -86,7 +86,9 @@ export function createEvent({title, address, description}, {lat, lng}){
   return function(dispatch){
     axios.post(`${ROOT_URL}/events`, { title, address, description, lat, lng }, TOKEN_CONFIG)
       .then(response => {
-        dispatch({ type: NEW_EVENT, payload: { title, address, description, lat, lng } });
+        dispatch({
+          type: NEW_EVENT,
+          payload: {title, address, description, lat, lng }});
       })
       .catch(error => {
         console.log(error)
