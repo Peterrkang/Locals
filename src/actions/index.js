@@ -14,7 +14,7 @@ import {
 } from './type';
 
 
-const ROOT_URL = 'http://localhost:3000';
+const ROOT_URL = 'https://locals-server.herokuapp.com/';
 let TOKEN_CONFIG = {
   headers: { Authorization: localStorage.getItem('token') }
 };;

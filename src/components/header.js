@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Modal from './modal';
 import * as actions from '../actions';
 import SearchBar from './search_bar';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 
 
@@ -30,26 +32,37 @@ class Header extends Component {
   renderLinks(){
       if(this.props.authenticated){
         return(
-          <nav className="navbar navbar-default">
-            <div className="container-fluid">
+          <Navbar default fluid>
+            <Navbar.Header>
+              <LinkContainer to="/events">
+                <Navbar.Brand>
+                  LocaLs
+                </Navbar.Brand>
+              </LinkContainer>
+              <Navbar.Toggle />
+
+            </Navbar.Header>
+            <Navbar.Collapse>
+
               <ul className="nav navbar-nav">
-                <li key={1}>
-                  <Link to="/events" className="navbar-brand">LocaLs</Link>
-                </li>
-                <li key={2}>
-                  <a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)}/>
-                </li>
-                <li className="navbar-form" key={3}>
-                  <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
-                </li>
-              </ul>
-              <ul className="nav navbar-nav pull-right">
-                <li key={4}>
-                  <Link to="/signout" className="glyphicon glyphicon-off" />
+                <li>
+                  <form className="navbar-form navbar-center">
+                    <div className="input-group">
+                      <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
+                      <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+                      <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
+                    </div>
+                  </form>
                 </li>
               </ul>
-            </div>
-          </nav>
+              <ul className="nav navbar-nav navbar-right">
+                <li className="nav-item"><Link to="/signout" className="glyphicon glyphicon-off"/></li>
+              </ul>
+            </Navbar.Collapse>
+          </Navbar>
+
+
+
         );
       }
     }
