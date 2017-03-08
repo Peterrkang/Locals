@@ -28,6 +28,7 @@ class EventForm extends Component {
         <fieldset className="form-group">
           <label>Title:</label>
           <input className="form-control" {...title}/>
+          {title.touched && title.error && <div className="error">{title.error}</div>}
         </fieldset>
         <fieldset className="form-group">
           <label>Address:</label>
@@ -36,10 +37,12 @@ class EventForm extends Component {
             onSuggestSelect={this.onSuggestSelect.bind(this)}
             {...address}
           />
+          {address.touched && address.error && <div className="error">{address.error}</div>}
         </fieldset>
         <fieldset className="form-group">
           <label>Description:</label>
           <textarea className="form-control" {...description}/>
+          {description.touched && description.error && <div className="error">{description.error}</div>}
         </fieldset>
         <button action="submit" className="btn btn-primary"> Add Event! </button>
       </form>
@@ -47,10 +50,24 @@ class EventForm extends Component {
   }
 
 }
+function validate(formProps) {
+  const errors = {};
+  if (!formProps.title) {
+    errors.title = 'Please Enter a title';
+  }
+  if (!formProps.address) {
+    errors.address = 'Please Enter an address';
+  }
+  if (!formProps.description) {
+    errors.description = 'Please Enter a description';
+  }
+  return errors;
+}
 
 
 
 export default reduxForm({
   form: 'addEvent',
-  fields: [ 'title', 'description', 'address' ]
+  fields: [ 'title', 'description', 'address' ],
+  validate
 }, null, actions)(EventForm)
