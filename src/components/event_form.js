@@ -24,7 +24,7 @@ class EventForm extends Component {
     const { handleSubmit, fields: { title, description, address }} = this.props;
 
     return(
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form className="form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
           <label>Title:</label>
           <input className="form-control" {...title}/>
