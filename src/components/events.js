@@ -35,10 +35,11 @@ class Events extends Component {
 
 
   render(){
+
     if(!this.state.lat || !this.state.lng){
       return <div> Loading Current Location....</div>;
     }
-    if(!this.props.events){
+    if(this.props.events.length <= 1){
       return <div> Loading Events Near You... </div>;
     }
 
