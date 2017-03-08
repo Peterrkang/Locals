@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    
+
   },
   "dependencies": {
     "babel-core": "^6.2.1",
