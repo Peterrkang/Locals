@@ -1,11 +1,13 @@
 {
-  "name": "redux-simple-starter",
+  "name": "Locals",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "App that brings locals together",
   "main": "index.js",
-  "repository": "git@github.com:Peterrkang/Locals/Client",
+  "repository": "git@github.com:Peterrkang/Locals",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "postinstall": "webpack -p",
+    "start": "node server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
@@ -40,6 +42,7 @@
     "react-router-bootstrap": "^0.23.1",
     "redux": "^3.0.4",
     "redux-form": "^5.3.3",
-    "redux-thunk": "^2.1.0"
+    "redux-thunk": "^2.1.0",
+    "webpack": "^1.14.0"
   }
 }

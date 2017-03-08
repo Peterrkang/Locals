@@ -38,5 +38,4 @@ function mapStateToProps(state){
 }
 
 
-
 export default connect(mapStateToProps, { fetchChatRoom })(ChatRoom);
