@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
+import database from '../database';
 import {
   AUTH_USER,
   UNAUTH_USER,
