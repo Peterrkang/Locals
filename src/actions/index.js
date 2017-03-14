@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import database from '../database';
+import { auth, database } from '../database';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -15,27 +15,6 @@ import {
 } from './type';
 
 
-const ROOT_URL = 'https://locals-server.herokuapp.com';
-let TOKEN_CONFIG = {
-  headers: { Authorization: localStorage.getItem('token') }
-};
-
-export function signinUser({ email, password }) {
-  return function(dispatch){
-    axios.post(`${ROOT_URL}/signin`, { email, password })
-      .then(response => {
-        dispatch({ type: AUTH_USER });
-        localStorage.setItem('token', response.data.token);
-        TOKEN_CONFIG = {
-          headers: { Authorization: localStorage.getItem('token') }
-        };
-        browserHistory.push('/events');
-      })
-      .catch(()=> {
-        dispatch(authError("Bad Login Info"));
-      });
-  }
-}
 
 export function signoutUser() {
   localStorage.removeItem('token');
@@ -45,18 +24,26 @@ export function signoutUser() {
 
 export function signupUser({ email, password }){
   return function(dispatch){
-    axios.post(`${ROOT_URL}/signup`, { email, password })
-      .then(response => {
-        dispatch({ type: AUTH_USER });
-        localStorage.setItem('token', response.data.token);
-        TOKEN_CONFIG = {
-          headers: { Authorization: localStorage.getItem('token') }
-        };
-        browserHistory.push('/events');
-      })
-      .catch(error => {
-        dispatch(authError(error.response.data.error))
-      });
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(response => {
+      dispatch({ type: AUTH_USER });
+      browserHistory.push('/events');
+    })
+    .catch((error) => {
+      dispatch(authError(error.message))
+    })
+  }
+}
+export function signinUser({ email, password }) {
+  return function(dispatch){
+    auth.signInWithEmailAndPassword(email, password)
+    .then(response => {
+      dispatch({ type: AUTH_USER });
+      browserHistory.push('/events');
+    })
+    .catch((error) => {
+      dispatch(authError(error.message));
+    })
   }
 }
 

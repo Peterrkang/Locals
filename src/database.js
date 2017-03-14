@@ -1,13 +1,12 @@
 import firebase from 'firebase';
 
 const config = {
-  apiKey: 'AIzaSyCkIMAjTRW11H4g1qea_M5MpN1Mv217MRA',
-  authDomain: 'Locals.firebaseio.com',
-  databaseURL: 'https://locals-53319.firebaseio.com/'
+  apiKey: "AIzaSyBPcm4EA0qIK51YnanpLSV4bwlzaITQGII",
+  authDomain: "locals-server.firebaseapp.com",
+  databaseURL: "https://locals-server.firebaseio.com"
 };
 
 firebase.initializeApp(config);
 
-const database = firebase.database();
-
-export default database;
+export const database = firebase.database();
+export const auth = firebase.auth();
