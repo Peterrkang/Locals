@@ -7,7 +7,7 @@ import * as actions from '../../actions';
 class SignOut extends Component {
 
   componentWillMount() {
-    this.props.signoutUser();
+    this.props.signOutUser();
   }
 
   render() {
