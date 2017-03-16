@@ -5,6 +5,7 @@ import GoogleMaps from './google_map';
 import Event from '../components/event';
 import EventsList from './events_list';
 import _ from 'lodash';
+import { database } from '../database';
 
 class Events extends Component {
 
@@ -17,12 +18,12 @@ class Events extends Component {
   }
 
   componentWillMount(){
-    this.props.fetchEvents();
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(this.onPositionReceived.bind(this));
     }else{
-      alert('No Geolocation Support')
+      alert('No Geolocation Support');
     }
+    this.props.fetchEvents();
   }
 
   onPositionReceived(position){
@@ -35,11 +36,10 @@ class Events extends Component {
 
 
   render(){
-
     if(!this.state.lat || !this.state.lng){
       return <div> Loading Current Location....</div>;
     }
-    if(this.props.events.length <= 1){
+    if(!this.props.events){
       return <div> Loading Events Near You... </div>;
     }
 

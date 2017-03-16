@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchChatRoom, addMessage } from '../actions';
 import Messages from './messages';
 import ChatForm from './chat_form';
+import { database } from '../database';
+import { connect } from 'react-redux';
+import { fetchChatRoom } from '../actions';
+
 
 
 class ChatRoom extends Component{
@@ -11,30 +13,23 @@ class ChatRoom extends Component{
     this.props.fetchChatRoom(this.props.params.id);
   }
 
-  onFormSubmit(event){
-    const chat = { message: this.state.message, id: this.props.params.id, user: this.props.currentUser }
-    this.props.addMessage(chat);
-    this.setState({ message: '' });
-  };
-
+  componentWillUnmount(){
+    database.ref('messages').off();
+  }
 
   render(){
+    const user = localStorage.getItem('user');
     return(
       <div className="container-fluid">
-        <h3>{this.props.title}</h3>
-        <Messages messages={this.props.messages} currentUser={this.props.currentUser}/>
-        <ChatForm id={this.props.params.id} user={this.props.currentUser} />
+        <Messages messages={this.props.chat} currentUser={user}/>
+        <ChatForm eventId={this.props.params.id} user={user} />
       </div>
     );
   }
 }
 
-function mapStateToProps(state){
-  return {
-    messages: state.chat.messages,
-    currentUser: state.chat.user,
-    title: state.chat.title
-  };
+function mapStateToProps({ chat }){
+  return { chat };
 }
 
 

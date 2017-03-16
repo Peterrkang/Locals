@@ -30,41 +30,34 @@ class Header extends Component {
   }
 
   renderLinks(){
-      if(this.props.authenticated){
-        return(
-          <Navbar default fluid>
-            <Navbar.Header>
-              <LinkContainer to="/events">
-                <Navbar.Brand>
-                  LocaLs
-                </Navbar.Brand>
-              </LinkContainer>
-              <Navbar.Toggle />
-
-            </Navbar.Header>
-            <Navbar.Collapse>
-
-              <ul className="nav navbar-nav">
-                <li>
-                  <form className="navbar-form navbar-center">
-                    <div className="input-group">
-                      <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
-                      <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
-                      <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
-                    </div>
-                  </form>
-                </li>
-              </ul>
-              <ul className="nav navbar-nav navbar-right">
-                <li className="nav-item"><Link to="/signout" className="glyphicon glyphicon-off"/></li>
-              </ul>
-            </Navbar.Collapse>
-          </Navbar>
-
-
-
-        );
-      }
+    return(
+      <Navbar default fluid>
+        <Navbar.Header>
+          <LinkContainer to="/events">
+            <Navbar.Brand>
+              LocaLs
+            </Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <ul className="nav navbar-nav">
+            <li>
+              <form className="navbar-form navbar-center">
+                <div className="input-group">
+                  <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
+                  <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+                  <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
+                </div>
+              </form>
+            </li>
+          </ul>
+          <ul className="nav navbar-nav navbar-right">
+            <li className="nav-item"><Link to="/signout" className="glyphicon glyphicon-off"/></li>
+          </ul>
+        </Navbar.Collapse>
+      </Navbar>
+      );
     }
 
     render(){
@@ -88,11 +81,4 @@ class Header extends Component {
 
 }
 
-function mapStateToProps(state){
-  return {
-    authenticated: state.auth.authenticated
-  };
-}
-
-
-export default connect(mapStateToProps, actions)(Header);
+export default connect(null, actions)(Header);

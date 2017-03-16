@@ -12,7 +12,7 @@ class Event extends Component {
       return <div>Select an event to get started.</div>;
     }else{
       const values = Object.values(this.props.activeEvent)[0];
-      const id = parseInt(Object.keys(this.props.activeEvent)[0]);
+      const id = Object.keys(this.props.activeEvent)[0];
       return (
         <div className="col-lg-6">
           <h3>{values.title}</h3>
@@ -20,7 +20,7 @@ class Event extends Component {
           <br />
           {values.address}
           <br />
-          <Link to={`/events/${id}/chatroom`} params={{id: id}}>
+          <Link to={`/events/${id}`} params={{id: id}}>
             Chat With Locals
           </Link>
         </div>

@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 
 
 class App extends Component {
+
+
   render() {
     let header;
-    if(this.props.authenticated){
+    if(localStorage.getItem('user')){
       header = (<Header />)
     }
-
     return (
       <div>
         {header}
@@ -19,10 +20,6 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return{
-    authenticated: state.auth.authenticated
-  };
-}
 
-export default connect(mapStateToProps, null)(App)
+
+export default App
