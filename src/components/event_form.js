@@ -6,14 +6,13 @@ import * as actions from '../actions';
 class EventForm extends Component {
 
   constructor(props){
-    super(props)
-
-    this.state = { location: ''}
+    super(props);
+    this.state = { location: ''};
   }
 
   handleFormSubmit(formProps){
     this.props.createEvent(formProps, this.state.location);
-    this.props.onClose()
+    this.props.onClose();
   }
 
   onSuggestSelect(suggest){
@@ -22,7 +21,6 @@ class EventForm extends Component {
 
   render(){
     const { handleSubmit, fields: { title, description, address }} = this.props;
-
     return(
       <form className="form" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
@@ -50,6 +48,7 @@ class EventForm extends Component {
   }
 
 }
+
 function validate(formProps) {
   const errors = {};
   if (!formProps.title) {

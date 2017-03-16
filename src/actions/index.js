@@ -1,6 +1,5 @@
-import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { auth, database } from '../database';
+import { auth, database, timestamp, Events, Messages } from '../database';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -15,9 +14,9 @@ import {
 } from './type';
 
 
-
-export function signoutUser() {
-  localStorage.removeItem('token');
+export function signOutUser() {
+  auth.signOut();
+  localStorage.removeItem('user');
   browserHistory.push('/');
   return { type: UNAUTH_USER };
 }
@@ -25,28 +24,30 @@ export function signoutUser() {
 export function signupUser({ email, password }){
   return function(dispatch){
     auth.createUserWithEmailAndPassword(email, password)
-    .then(response => {
+    .then( response => {
       dispatch({ type: AUTH_USER });
+      localStorage.setItem('user', response.email);
       browserHistory.push('/events');
     })
-    .catch((error) => {
+    .catch( error => {
       dispatch(authError(error.message))
     })
   }
 }
+
 export function signinUser({ email, password }) {
-  return function(dispatch){
+  return dispatch => {
     auth.signInWithEmailAndPassword(email, password)
-    .then(response => {
+    .then( response => {
       dispatch({ type: AUTH_USER });
+      localStorage.setItem('user', response.email);
       browserHistory.push('/events');
     })
-    .catch((error) => {
+    .catch( error => {
       dispatch(authError(error.message));
     })
   }
 }
-
 
 export function authError(error){
   return {
@@ -56,32 +57,47 @@ export function authError(error){
 }
 
 export function fetchEvents(){
-  return function(dispatch) {
-    axios.get(`${ROOT_URL}/events`, TOKEN_CONFIG)
-    .then(response => {
-        dispatch({
-          type: FETCH_EVENTS,
-          payload: response.data
-        });
+  return dispatch => {
+    Events.on('value', snapshot => {
+      dispatch({
+        type: FETCH_EVENTS,
+        payload: snapshot.val()
+      });
     })
-    .catch(error => {
-      console.log(error)
+  }
+}
+
+export function fetchChatRoom(eventId){
+  return dispatch => {
+    Messages.on('value', snapshot => {
+      let messages = {};
+      snapshot.forEach( childSnap => {
+          if(childSnap.val().eventId == eventId){
+            messages[childSnap.getKey()] = childSnap.val();
+          }
+      })
+      dispatch({
+        type: FETCH_CHATROOM,
+        payload: messages
+      });
     })
   }
 }
 
 export function createEvent({title, address, description}, {lat, lng}){
-  return function(dispatch){
-    axios.post(`${ROOT_URL}/events`, { title, address, description, lat, lng }, TOKEN_CONFIG)
-      .then(response => {
+  const newEventKey = Events.push().key;
+  return dispatch => {
+    database.ref('events/' + newEventKey).set({ title, address, description, lat, lng })
+      .then(() => {
         dispatch({
           type: NEW_EVENT,
-          payload: {title, address, description, lat, lng }});
+          payload: {title, address, description, lat, lng, newEventKey}
+        });
       })
       .catch(error => {
-        console.log(error)
+        console.log(error);
       })
-  }
+    }
 }
 
 export function selectEvent(event){
@@ -91,33 +107,10 @@ export function selectEvent(event){
   };
 }
 
-export function fetchChatRoom(id){
-  return function(dispatch) {
-    axios.get(`${ROOT_URL}/events/${id}/chatroom`, TOKEN_CONFIG)
-    .then(response => {
-        dispatch({
-          type: FETCH_CHATROOM,
-          payload: response.data
-        });
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  }
-}
-
-export function addMessage({message, id, user}){
-  return function(dispatch) {
-    axios.post(`${ROOT_URL}/events/${id}/chatroom`,{ message, id } , TOKEN_CONFIG)
-    .then(response => {
-        dispatch({
-          type: ADD_MESSAGE,
-          payload: { message, user, id }
-        });
-    })
-    .catch(error => {
-      console.log(error)
-    })
+export function searchEvents(term){
+  return{
+    type: SEARCH_EVENTS,
+    payload: term
   }
 }
 
@@ -125,12 +118,5 @@ export function openModal(modal){
   return{
     type: OPEN_MODAL,
     payload: modal
-  }
-}
-
-export function searchEvents(term){
-  return{
-    type: SEARCH_EVENTS,
-    payload: term
   }
 }

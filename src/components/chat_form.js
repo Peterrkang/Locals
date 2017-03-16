@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMessage } from '../actions'
+import { timestamp, database } from '../database';
 
 
 class ChatForm extends Component{
@@ -11,8 +11,13 @@ class ChatForm extends Component{
   }
 
   onFormSubmit(event){
-    const chat = { message: this.state.message, id: this.props.id, user: this.props.user }
-    this.props.addMessage(chat);
+    event.preventDefault();
+    const newMessageKey = database.ref('messages').push().key;
+    database.ref('messages/' + newMessageKey).set({
+      message: this.state.message,
+      eventId: this.props.eventId,
+      user: this.props.user,
+      created_at: timestamp });
     this.setState({ message: '' });
   };
 
@@ -22,20 +27,18 @@ class ChatForm extends Component{
 
   render(){
     return(
-        <div className="row">
-          <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
-            <input className="form-control"
-              placeholder="..."
-              value={this.state.message}
-              onChange={this.onInputChange.bind(this)}
-              autoFocus
-            />
-          </form>
-        </div>
+      <div className="row">
+        <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
+          <input className="form-control"
+            placeholder="..."
+            value={this.state.message}
+            onChange={this.onInputChange.bind(this)}
+            autoFocus
+          />
+        </form>
+      </div>
     );
   }
 }
 
-
-
-export default connect(null, { addMessage })(ChatForm);
+export default ChatForm;

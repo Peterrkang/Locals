@@ -6,16 +6,15 @@ import * as actions from '../actions';
 import { browserHistory } from 'react-router';
 
 class Home extends Component{
-
-  componentWillMount(){
-    if(this.props.authenticated){
-      browserHistory.push('/events');
-    }
-  }
-
   constructor(props){
     super(props);
     this.state = { account: false };
+  }
+
+  componentWillMount(){
+    if(localStorage.getItem('user')){
+      browserHistory.push('/events')
+    }
   }
 
   accountState(event){
@@ -62,11 +61,6 @@ class Home extends Component{
   }
 }
 
-function mapStateToProps(state){
-  return {
-    authenticated: state.auth.authenticated
-  };
-}
 
 
-export default connect(mapStateToProps, actions)(Home);
+export default connect(null, actions)(Home);

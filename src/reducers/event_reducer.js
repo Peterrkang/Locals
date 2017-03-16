@@ -10,11 +10,9 @@ const INITIAL_STATE={};
 export default function(state = INITIAL_STATE, action){
   switch(action.type){
     case FETCH_EVENTS:
-      const newPosts = _.mapKeys(action.payload, 'id');
-      return {...state, ...newPosts};
+      return {...state, ...action.payload};
     case NEW_EVENT:
-      const id = parseInt(Object.keys(state).pop())+1;
-      return {...state, [id]: action.payload };
+      return {...state, [action.payload.newEventKey]: action.payload};
     case DELETE_EVENT:
       return _.omit(state, action.payload);
     default:

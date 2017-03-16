@@ -35,7 +35,6 @@ class Modal extends Component {
   }
 
   _render() {
-
     ReactDOM.render(
       <Provider store={store}>
         <div className="container-fluid">

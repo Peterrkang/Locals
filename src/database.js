@@ -8,5 +8,8 @@ const config = {
 
 firebase.initializeApp(config);
 
+export let timestamp = firebase.database.ServerValue.TIMESTAMP
 export const database = firebase.database();
 export const auth = firebase.auth();
+export const Events = database.ref('events');
+export const Messages = database.ref('messages');
