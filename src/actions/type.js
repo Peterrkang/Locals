@@ -6,6 +6,6 @@ export const NEW_EVENT = 'events_new';
 export const SELECTED_EVENT = 'selected_event';
 export const DELETE_EVENT = 'delete_event';
 export const FETCH_CHATROOM = 'fetch_chatroom';
-export const ADD_MESSAGE = 'add_message';
+export const NEW_MESSAGE = 'add_message';
 export const OPEN_MODAL = 'open_modal';
 export const SEARCH_EVENTS = 'search_events';

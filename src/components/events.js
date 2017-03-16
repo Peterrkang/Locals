@@ -5,16 +5,13 @@ import GoogleMaps from './google_map';
 import Event from '../components/event';
 import EventsList from './events_list';
 import _ from 'lodash';
-import { database } from '../database';
+import { eventRef } from '../database';
 
 class Events extends Component {
 
   constructor(props){
     super(props)
-    this.state = {
-      lat: '',
-      lng: ''
-    }
+    this.state = { lat: '', lng: '' }
   }
 
   componentWillMount(){
@@ -24,6 +21,10 @@ class Events extends Component {
       alert('No Geolocation Support');
     }
     this.props.fetchEvents();
+  }
+
+  componentWillUnmount(){
+    eventRef.off();
   }
 
   onPositionReceived(position){

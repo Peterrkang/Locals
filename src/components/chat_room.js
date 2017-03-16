@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Messages from './messages';
 import ChatForm from './chat_form';
-import { database } from '../database';
+import { messageRef } from '../database';
 import { connect } from 'react-redux';
 import { fetchChatRoom } from '../actions';
 
@@ -14,7 +14,7 @@ class ChatRoom extends Component{
   }
 
   componentWillUnmount(){
-    database.ref('messages').off();
+    messageRef.off();
   }
 
   render(){

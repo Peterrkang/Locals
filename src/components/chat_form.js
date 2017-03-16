@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { timestamp, database } from '../database';
+import * as actions from '../actions'
+import { timestamp } from '../database';
 
 
 class ChatForm extends Component{
@@ -11,13 +12,13 @@ class ChatForm extends Component{
   }
 
   onFormSubmit(event){
-    event.preventDefault();
-    const newMessageKey = database.ref('messages').push().key;
-    database.ref('messages/' + newMessageKey).set({
+    const message = {
       message: this.state.message,
       eventId: this.props.eventId,
       user: this.props.user,
-      created_at: timestamp });
+      created_at: timestamp
+    }
+    this.props.createMessage(message)
     this.setState({ message: '' });
   };
 
@@ -41,4 +42,4 @@ class ChatForm extends Component{
   }
 }
 
-export default ChatForm;
+export default connect(null, actions)(ChatForm);

@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import { auth, database, timestamp, Events, Messages } from '../database';
+import { auth, database, timestamp, eventRef, messageRef } from '../database';
 import {
   AUTH_USER,
   UNAUTH_USER,
@@ -8,7 +8,7 @@ import {
   NEW_EVENT,
   SELECTED_EVENT,
   FETCH_CHATROOM,
-  ADD_MESSAGE,
+  NEW_MESSAGE,
   OPEN_MODAL,
   SEARCH_EVENTS
 } from './type';
@@ -58,7 +58,7 @@ export function authError(error){
 
 export function fetchEvents(){
   return dispatch => {
-    Events.on('value', snapshot => {
+    eventRef.on('value', snapshot => {
       dispatch({
         type: FETCH_EVENTS,
         payload: snapshot.val()
@@ -69,7 +69,7 @@ export function fetchEvents(){
 
 export function fetchChatRoom(eventId){
   return dispatch => {
-    Messages.on('value', snapshot => {
+    messageRef.on('value', snapshot => {
       let messages = {};
       snapshot.forEach( childSnap => {
           if(childSnap.val().eventId == eventId){
@@ -87,17 +87,33 @@ export function fetchChatRoom(eventId){
 export function createEvent({title, address, description}, {lat, lng}){
   const newEventKey = Events.push().key;
   return dispatch => {
-    database.ref('events/' + newEventKey).set({ title, address, description, lat, lng })
+    database.ref('events/' + newEventKey).set({ title, address, description, lat, lng, created_at: timestamp })
       .then(() => {
         dispatch({
           type: NEW_EVENT,
-          payload: {title, address, description, lat, lng, newEventKey}
+          payload: {title, address, description, lat, lng, newEventKey, created_at: timestamp}
         });
       })
       .catch(error => {
         console.log(error);
       })
     }
+}
+
+export function createMessage(message){
+  const newMessageKey = messageRef.push().key;
+  return dispatch => {
+    database.ref('messages/' + newMessageKey).set(message)
+    .then(()=> {
+      dispatch({
+        type: NEW_MESSAGE,
+        payload: {message, newMessageKey}
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
 }
 
 export function selectEvent(event){
