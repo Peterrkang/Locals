@@ -106,3 +106,8 @@ time {
   overflow-y: scroll;
   max-height: 200px;
 }
+
+.list-group li:hover{
+  border-color: #00BFFF;
+  border-width: medium;
+}
