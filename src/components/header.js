@@ -35,7 +35,7 @@ class Header extends Component {
         <Navbar.Header>
           <LinkContainer to="/events">
             <Navbar.Brand>
-              <span><img src="../../images/logo1.png" /></span> | LocaLs
+              <span><img src="../../images/Logo.jpg" /></span> | LocaLs
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
