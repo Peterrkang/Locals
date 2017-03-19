@@ -111,3 +111,15 @@ time {
   border-color: #00BFFF;
   border-width: medium;
 }
+
+.navbar-brand{
+  margin-top: -8px;
+}
+
+span img {
+  margin-bottom: 10px;
+}
+
+.nav-item img {
+  margin-top: 12px;
+}

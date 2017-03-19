@@ -31,11 +31,11 @@ class Header extends Component {
 
   renderLinks(){
     return(
-      <Navbar default fluid>
+      <Navbar fluid>
         <Navbar.Header>
           <LinkContainer to="/events">
             <Navbar.Brand>
-              LocaLs
+              <span><img src="../../images/logo1.png" /></span> | LocaLs
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
@@ -53,7 +53,9 @@ class Header extends Component {
             </li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
-            <li className="nav-item"><Link to="/signout" className="glyphicon glyphicon-off"/></li>
+            <li className="nav-item"><LinkContainer to="/signout">
+              <img src="../../images/exitDoor.jpg" />
+            </LinkContainer></li>
           </ul>
         </Navbar.Collapse>
       </Navbar>
