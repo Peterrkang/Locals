@@ -29,7 +29,7 @@ class Home extends Component{
     let newUser;
     if(this.state.account == true){
       newUser = (
-        <div className="col-xs-4 " id="account">
+        <div className="account">
           <SignIn />
           <h5 className="centered">Don't have an Account?
             <a href="#" onClick={this.accountState.bind(this)}> Sign Up</a>
@@ -38,24 +38,31 @@ class Home extends Component{
       )
     }else{
       newUser = (
-          <div className="col-xs-4" id="account">
-            <SignUp />
-            <h5 className="centered">Have an Account?
-              <a href="#" onClick={this.accountState.bind(this)}> Sign In</a>
-            </h5>
-          </div>
+        <div className="account">
+          <SignUp />
+          <h5 className="centered">Have an Account?
+            <a href="#" onClick={this.accountState.bind(this)}> Sign In</a>
+          </h5>
+        </div>
       )
     }
 
     return(
-      <div>
+      <div className="container-fluid">
+        <span>
+          <img className="frontLogo" src="../../images/HomeLogo.png"/>
           <h2>Locals</h2>
-          <div className="container-fluid" id="home">
-            <div className="row">
-              <div className="col-xs-4" id="info" />
-              {newUser}
+        </span>
+        <div className="row">
+          <div className="col-xs-6">
+            <div id="frontImg">
+              <img src="../../images/FrontPage.png"/>
             </div>
           </div>
+          <div className="col-xs-6">
+            {newUser}
+          </div>
+        </div>
       </div>
     );
   }

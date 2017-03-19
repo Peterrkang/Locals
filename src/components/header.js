@@ -41,22 +41,22 @@ class Header extends Component {
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>
-          <ul className="nav navbar-nav">
-            <li>
-              <form className="navbar-form navbar-center">
-                <div className="input-group">
-                  <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
-                  <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
-                  <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
-                </div>
-              </form>
-            </li>
-          </ul>
-          <ul className="nav navbar-nav navbar-right">
-            <li className="nav-item"><LinkContainer to="/signout">
-              <img src="../../images/exitDoor.jpg" />
-            </LinkContainer></li>
-          </ul>
+          <Nav>
+            <Navbar.Form>
+              <div className="input-group">
+                <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
+                <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+                <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
+              </div>
+            </Navbar.Form>
+          </Nav>
+          <Nav pullRight>
+            <NavItem>
+              <LinkContainer to="/signout">
+                <img src="../../images/exitDoor.jpg" />
+              </LinkContainer>
+            </NavItem>
+          </Nav>
         </Navbar.Collapse>
       </Navbar>
       );
