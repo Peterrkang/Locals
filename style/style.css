@@ -127,6 +127,9 @@ span img {
   margin-bottom: 10px;
 }
 
+.navbar-form input{
+  min-width: 400px;
+}
 
 ul li a {
   margin-top: -3px;
