@@ -8,12 +8,7 @@ export default class GoogleMaps extends Component{
 
   constructor(props){
     super(props);
-
-    this.state = {
-      lat: this.props.lat,
-      lng: this.props.lng,
-      marker: ''
-    };
+    this.state = { marker: '' };
   }
 
   onMarkerClick(targetMarker){
@@ -59,19 +54,22 @@ export default class GoogleMaps extends Component{
     }
 
     render(){
-      const { lat, lng } = this.state;
+      const { lat, lng } = this.props;
       return(
-        <GoogleMapLoader
-          containerElement={<div style={{height: '100%'}} />}
-          googleMapElement={
-            <GoogleMap
-              defaultZoom={12}
-              defaultCenter={{lat: lat, lng: lng}}
-            >
-              { this.renderMarkers() }
-            </GoogleMap>
-          }
-        />
+        <div className="google-map">
+          <GoogleMapLoader
+            containerElement={<div style={{height: '100%'}} />}
+            googleMapElement={
+              <GoogleMap
+                defaultZoom={12}
+                defaultCenter={{lat: lat, lng: lng}}
+              >
+                { this.renderMarkers() }
+              </GoogleMap>
+            }
+          />
+        </div>
+
       );
     }
 

@@ -56,9 +56,12 @@ export default class Messages extends Component {
       return <div>Start Chatting...</div>;
     }
     return(
-      <ol className="list-group" id="chatList">
-        {this.renderChat()}
-      </ol>
+      <div className="messages">
+        <ol className="list-group" id="chatList">
+          {this.renderChat()}
+        </ol>
+      </div>
+
     );
 
   }

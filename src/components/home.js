@@ -48,22 +48,25 @@ class Home extends Component{
     }
 
     return(
-      <div className="container-fluid">
-        <span>
-          <img className="frontLogo" src="../../images/HomeLogo.png"/>
-          <h2>Locals</h2>
-        </span>
-        <div className="row">
-          <div className="col-xs-6">
-            <div id="frontImg">
-              <img src="../../images/FrontPage.png"/>
+      <div className="home">
+        <div className="container-fluid">
+          <span>
+            <img className="frontLogo" src="../../images/HomeLogo.png"/>
+            <h2>Locals</h2>
+          </span>
+          <div className="row">
+            <div className="col-xs-6">
+              <div id="frontImg">
+                <img src="../../images/FrontPage.png"/>
+              </div>
             </div>
-          </div>
-          <div className="col-xs-6">
-            {newUser}
+            <div className="col-xs-6">
+              {newUser}
+            </div>
           </div>
         </div>
       </div>
+
     );
   }
 }

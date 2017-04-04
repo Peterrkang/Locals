@@ -31,34 +31,37 @@ class Header extends Component {
 
   renderLinks(){
     return(
-      <Navbar fluid>
-        <Navbar.Header>
-          <LinkContainer to="/events">
-            <Navbar.Brand>
-              <span><img src="../../images/Logo.jpg" /></span> | LocaLs
-            </Navbar.Brand>
-          </LinkContainer>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <Navbar.Form>
-              <div className="input-group">
-                <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
-                <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
-                <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
-              </div>
-            </Navbar.Form>
-          </Nav>
-          <Nav pullRight>
-            <NavItem>
-              <LinkContainer to="/signout">
-                <img src="../../images/exitDoor.jpg" />
-              </LinkContainer>
-            </NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <div className="header">
+        <Navbar fluid>
+          <Navbar.Header>
+            <LinkContainer to="/events">
+              <Navbar.Brand>
+                <span><img src="../../images/Logo.jpg" /></span> | LocaLs
+              </Navbar.Brand>
+            </LinkContainer>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <Navbar.Form>
+                <div className="input-group">
+                  <span className="input-group-addon"><span className="glyphicon glyphicon-search"/> </span>
+                  <SearchBar onSearchTermChange={this.eventSearch.bind(this)} />
+                  <span className="input-group-addon"><a href="#" className="glyphicon glyphicon-plus" onClick={this.open.bind(this)} onClose={this.close.bind(this)} /></span>
+                </div>
+              </Navbar.Form>
+            </Nav>
+            <Nav pullRight>
+              <NavItem>
+                <LinkContainer to="/signout">
+                  <img src="../../images/exitDoor.jpg" />
+                </LinkContainer>
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+
       );
     }
 

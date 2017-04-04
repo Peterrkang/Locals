@@ -20,10 +20,13 @@ class ChatRoom extends Component{
   render(){
     const user = localStorage.getItem('user');
     return(
-      <div className="container-fluid">
-        <Messages messages={this.props.chat} currentUser={user}/>
-        <ChatForm eventId={this.props.params.id} user={user} />
+      <div className="chat-room">
+        <div className="container-fluid">
+          <Messages messages={this.props.chat} currentUser={user}/>
+          <ChatForm eventId={this.props.params.id} user={user} />
+        </div>
       </div>
+
     );
   }
 }

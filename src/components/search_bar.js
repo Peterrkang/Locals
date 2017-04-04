@@ -6,19 +6,19 @@ export default class SearchBar extends Component {
 
   constructor(props) {
     super(props);
-
+    
     this.state = { term: '' };
   }
 
   handleKeyPress(target) {
-    if(target.charCode==13){
+    if(target.charCode == 13){
         target.preventDefault();
     }
-
   }
 
   render() {
     return (
+      <div className="search-bar">
         <input
           className="form-control"
           value = {this.state.term}
@@ -27,12 +27,12 @@ export default class SearchBar extends Component {
           placeholder="Search Events"
           onKeyPress = {target => this.handleKeyPress(target)}
         />
-
+      </div>
       );
   };
 
   onInputChange(term){
-    this.setState({term});
+    this.setState({ term });
     this.props.onSearchTermChange(term);
   }
 

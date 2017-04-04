@@ -14,16 +14,19 @@ class Event extends Component {
       const values = Object.values(this.props.activeEvent)[0];
       const id = Object.keys(this.props.activeEvent)[0];
       return (
-        <div className="col-lg-6">
-          <h3>{values.title}</h3>
-          {values.description}
-          <br />
-          {values.address}
-          <br />
-          <Link to={`/events/${id}`} params={{id: id}}>
-            Chat With Locals
-          </Link>
+        <div className="event">
+          <div className="col-lg-6">
+            <h3>{values.title}</h3>
+            {values.description}
+            <br />
+            {values.address}
+            <br />
+            <Link to={`/events/${id}`} params={{id: id}}>
+              Chat With Locals
+            </Link>
+          </div>
         </div>
+
       );
     }
   }

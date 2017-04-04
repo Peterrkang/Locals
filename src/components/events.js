@@ -11,13 +11,18 @@ class Events extends Component {
 
   constructor(props){
     super(props)
+    
     this.state = { lat: '', lng: '' }
   }
 
   componentWillMount(){
     if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(this.onPositionReceived.bind(this));
-    }else{
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.setState({ lat: position.coords.latitude, lng: position.coords.longitude });
+      },(error) => {
+        alert('Error! Error Code:' + error.code);
+      })
+    }else {
       alert('No Geolocation Support');
     }
     this.props.fetchEvents();
@@ -27,28 +32,23 @@ class Events extends Component {
     eventRef.off();
   }
 
-  onPositionReceived(position){
-    this.setState({ lat: position.coords.latitude, lng: position.coords.longitude });
-  }
-
   onClickEvent(event){
     this.props.selectEvent(event);
   }
 
 
   render(){
-    if(!this.state.lat || !this.state.lng){
-      return <div> Loading Current Location....</div>;
-    }
+
     if(!this.props.events){
       return <div> Loading Events Near You... </div>;
     }
-
+    if(!this.state.lat || !this.state.lng){
+      return <div> Loading Current Location....</div>;
+    }
     return(
-      <div>
-        <div className="container-fluid" id="map">
+      <div className="events">
+        <div className="container-fluid">
           <GoogleMaps
-            id="googleMaps"
             onClickEvent={this.onClickEvent.bind(this)}
             lat={this.state.lat}
             lng={this.state.lng}

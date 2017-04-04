@@ -28,16 +28,19 @@ class ChatForm extends Component{
 
   render(){
     return(
-      <div className="row">
-        <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
-          <input className="form-control"
-            placeholder="..."
-            value={this.state.message}
-            onChange={this.onInputChange.bind(this)}
-            autoFocus
-          />
-        </form>
+      <div className="chat-form">
+        <div className="row">
+          <form className="form-group" onSubmit={this.onFormSubmit.bind(this)}>
+            <input className="form-control"
+              placeholder="..."
+              value={this.state.message}
+              onChange={this.onInputChange.bind(this)}
+              autoFocus
+            />
+          </form>
+        </div>
       </div>
+
     );
   }
 }
