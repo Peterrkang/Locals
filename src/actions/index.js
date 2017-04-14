@@ -10,8 +10,16 @@ import {
   FETCH_CHATROOM,
   NEW_MESSAGE,
   OPEN_MODAL,
-  SEARCH_EVENTS
+  SEARCH_EVENTS,
+  FETCH_LOCATION
 } from './type';
+
+export function fetchLocation({lat, lng}){
+  return {
+    type: FETCH_LOCATION,
+    payload: { lat, lng }
+  }
+}
 
 
 export function signOutUser() {

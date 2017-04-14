@@ -9,3 +9,4 @@ export const FETCH_CHATROOM = 'fetch_chatroom';
 export const NEW_MESSAGE = 'add_message';
 export const OPEN_MODAL = 'open_modal';
 export const SEARCH_EVENTS = 'search_events';
+export const FETCH_LOCATION = 'fetch_location';

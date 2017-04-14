@@ -12,6 +12,15 @@ class Home extends Component{
   }
 
   componentWillMount(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.props.fetchLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+      },(error) => {
+        alert('Error! Error Code:' + error.code);
+      })
+    }else {
+      alert('No Geolocation Support');
+    }
     if(localStorage.getItem('user')){
       browserHistory.push('/events')
     }
