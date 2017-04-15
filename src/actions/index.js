@@ -18,9 +18,8 @@ export function fetchLocation({lat, lng}){
   return {
     type: FETCH_LOCATION,
     payload: { lat, lng }
-  }
+  };
 }
-
 
 export function signOutUser() {
   auth.signOut();
@@ -38,7 +37,7 @@ export function signupUser({ email, password }){
       browserHistory.push('/events');
     })
     .catch( error => {
-      dispatch(authError(error.message))
+      dispatch(authError(error.message));
     })
   }
 }

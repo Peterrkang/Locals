@@ -16,10 +16,10 @@ class Home extends Component{
       navigator.geolocation.getCurrentPosition((position) => {
         this.props.fetchLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
       },(error) => {
-        alert('Error! Error Code:' + error.code);
+        alert("Unable to get your current location!");
       })
     }else {
-      alert('No Geolocation Support');
+      alert('No Geolocation Support!');
     }
     if(localStorage.getItem('user')){
       browserHistory.push('/events')
