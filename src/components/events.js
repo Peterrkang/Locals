@@ -46,14 +46,14 @@ class Events extends Component {
         </div>
         <div clasName="container-fluid" id="events">
           <div className="row">
+            <Event
+              onSearch={this.props.search}
+            />
             <EventsList
               onClickEvent={this.onClickEvent.bind(this)}
               events= {this.props.events}
               onSearch={this.props.search}
-            />
-            <Event
-              onSearch={this.props.search}
-            />
+            />  
           </div>
         </div>
       </div>

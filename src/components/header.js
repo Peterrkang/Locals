@@ -13,7 +13,7 @@ class Header extends Component {
 
   constructor(props){
     super(props);
-    this.state = {showModal: false};
+    this.state = { showModal: false };
   }
 
   open(event){
@@ -31,7 +31,6 @@ class Header extends Component {
 
   renderLinks(){
     return(
-      <div className="header">
         <Navbar fluid>
           <Navbar.Header>
             <LinkContainer to="/events">
@@ -60,30 +59,21 @@ class Header extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-      </div>
-
       );
     }
 
-    render(){
-        let modal;
-        if(this.state.showModal == true){
-          modal = (
-            <Modal onClose={this.close.bind(this)} />
-          )
-        }else{
-          modal = (
-            <noscript />
-          )
-        }
-        return(
-          <div>
-            {this.renderLinks()}
-            {modal}
-          </div>
-        );
-      }
-
+  render(){
+    return(
+      <div>
+        {this.renderLinks()}
+        {this.state.showModal == true ? (
+          <Modal onClose={this.close.bind(this)} />
+        ):(
+          <noscript />
+        )}
+      </div>
+      );
+    }
 }
 
 export default connect(null, actions)(Header);

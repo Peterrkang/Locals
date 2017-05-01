@@ -63,23 +63,18 @@ class Home extends Component{
             <img className="frontLogo" src="../../images/HomeLogo.png"/>
             <h2>Locals</h2>
           </span>
-          <div className="row">
-            <div className="col-xs-6">
-              <div id="frontImg">
-                <img src="../../images/FrontPage.png"/>
-              </div>
+          <div className="col-md-offset-2 col-sm-offset-1 row">
+            <div className="col-xs-6 col-md-4" id="frontImg">
+              <img src="../../images/FrontPage.png"/>
             </div>
-            <div className="col-xs-6">
+            <div className="col-xs-6 col-md-4">
               {newUser}
             </div>
           </div>
         </div>
       </div>
-
     );
   }
 }
-
-
 
 export default connect(null, actions)(Home);
