@@ -34,13 +34,10 @@ export default class EventsList extends Component {
   render(){
     return(
       <div className="event-list">
-        <div className="col-lg-6">
-          <ul className="list-group menu-scroll">
-            {this.renderEvents()}
-          </ul>
-        </div>
+        <ul className="list-group menu-scroll">
+          {this.renderEvents()}
+        </ul>
       </div>
-
     );
   }
 }

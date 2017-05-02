@@ -25,12 +25,20 @@ class Events extends Component {
     this.props.selectEvent(event);
   }
 
-
   render(){
     if(!this.props.events){
       return <div> Loading Events Near You... </div>;
     }
     if(!this.props.lat || !this.props.lng){
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition((position) => {
+          this.props.fetchLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+        },(error) => {
+          alert("Unable to get your current location!");
+        })
+      }else {
+        alert('No Geolocation Support!');
+      }
       return <div> Loading Current Location....</div>;
     }
     return(
@@ -46,14 +54,18 @@ class Events extends Component {
         </div>
         <div clasName="container-fluid" id="events">
           <div className="row">
-            <Event
-              onSearch={this.props.search}
-            />
-            <EventsList
-              onClickEvent={this.onClickEvent.bind(this)}
-              events= {this.props.events}
-              onSearch={this.props.search}
-            />  
+            <div className="col-lg-6 col-md-6">
+              <Event
+                onSearch={this.props.search}
+              />
+            </div>
+            <div className="col-lg-6 col-md-6">
+              <EventsList
+                onClickEvent={this.onClickEvent.bind(this)}
+                events= {this.props.events}
+                onSearch={this.props.search}
+              />
+            </div>
           </div>
         </div>
       </div>

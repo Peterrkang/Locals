@@ -63,11 +63,11 @@ class Home extends Component{
             <img className="frontLogo" src="../../images/HomeLogo.png"/>
             <h2>Locals</h2>
           </span>
-          <div className="col-md-offset-2 col-sm-offset-1 row">
-            <div className="col-xs-6 col-md-4" id="frontImg">
+          <div className="row">
+            <div className="col-md-offset-2 col-md-4 col-lg-offset-2 col-lg-3 col-xs-6" id="frontImg">
               <img src="../../images/FrontPage.png"/>
             </div>
-            <div className="col-xs-6 col-md-4">
+            <div className="col-xs-6 col-md-4 col-lg-3">
               {newUser}
             </div>
           </div>

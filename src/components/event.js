@@ -9,13 +9,12 @@ class Event extends Component {
     const values = Object.values(this.props.activeEvent)[0];
     const id = Object.keys(this.props.activeEvent)[0];
     if(!id) {
-      return <div>Select an event to get started.</div>;
+      return <div className="event"> Select an event to get started. </div>;
     }else{
       const values = Object.values(this.props.activeEvent)[0];
       const id = Object.keys(this.props.activeEvent)[0];
       return (
         <div className="event">
-          <div className="col-lg-6">
             <h3>{values.title}</h3>
             {values.description}
             <br />
@@ -24,7 +23,6 @@ class Event extends Component {
             <Link to={`/events/${id}`} params={{id: id}}>
               Chat With Locals
             </Link>
-          </div>
         </div>
 
       );
