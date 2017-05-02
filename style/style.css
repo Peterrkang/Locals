@@ -19,7 +19,7 @@ body .modal {
   top: 22%;
   left: 5%;
   right: 5%;
-  bottom: 33%;
+  bottom: 18%;
   border: 1px solid #ccc;
   background: #fff;
   overflow: visible;
@@ -146,6 +146,7 @@ ul li a {
   body .modal{
     left: 20%;
     right: 20%;
+    bottom: 20%;
   }
 }
 
@@ -154,11 +155,20 @@ ul li a {
   body .modal{
     left: 30%;
     right: 30%;
+    bottom: 30%;
   }
 
   .event{
     margin-top: 10%;
     border: none;
     border-radius: none;
+  }
+}
+
+@media (min-width: 1440px) {
+  body .modal{
+    left: 30%;
+    right: 30%;
+    bottom: 37%;
   }
 }
