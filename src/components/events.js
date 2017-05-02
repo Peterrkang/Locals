@@ -37,6 +37,37 @@ class Events extends Component {
     }
   }
 
+  renderGoogleMaps(){
+    return(
+      <GoogleMaps
+        onClickEvent={this.onClickEvent.bind(this)}
+        lat={this.props.lat}
+        lng={this.props.lng}
+        markers={this.props.events}
+        onSearch={this.props.search}
+      />
+    );
+  }
+
+  renderCurrentEvent(){
+    return(
+      <Event
+        activeEvent={this.props.activeEvent}
+        onSearch={this.props.search}
+      />
+    );
+  }
+
+  renderEventList(){
+    return(
+      <EventsList
+        onClickEvent={this.onClickEvent.bind(this)}
+        events= {this.props.events}
+        onSearch={this.props.search}
+      />
+    );
+  }
+
   render(){
     if(!this.props.events){
       return <div> Loading Events Near You...<img src="../../images/loading.gif"/> </div>;
@@ -48,27 +79,15 @@ class Events extends Component {
     return(
       <div className="events">
         <div className="container-fluid">
-          <GoogleMaps
-            onClickEvent={this.onClickEvent.bind(this)}
-            lat={this.props.lat}
-            lng={this.props.lng}
-            markers={this.props.events}
-            onSearch={this.props.search}
-          />
+          { this.renderGoogleMaps() }
         </div>
         <div clasName="container-fluid" id="events">
           <div className="row">
             <div className="col-lg-6 col-md-6">
-              <Event
-                onSearch={this.props.search}
-              />
+              { this.renderCurrentEvent() }
             </div>
             <div className="col-lg-6 col-md-6">
-              <EventsList
-                onClickEvent={this.onClickEvent.bind(this)}
-                events= {this.props.events}
-                onSearch={this.props.search}
-              />
+              { this.renderEventList() }
             </div>
           </div>
         </div>
@@ -82,7 +101,8 @@ function mapStateToProps(state){
     events: state.events,
     search: state.search,
     lat: state.location.lat,
-    lng: state.location.lng
+    lng: state.location.lng,
+    activeEvent: state.activeEvent
   };
 }
 
