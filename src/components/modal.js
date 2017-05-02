@@ -30,7 +30,7 @@ class Modal extends Component {
 
   handleClick = (e) =>{
     if(!ReactDOM.findDOMNode(this.modalTarget).contains(e.target)){
-      this.props.onClose()
+      this.props.onClose();
     }
   }
 

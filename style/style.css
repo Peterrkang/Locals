@@ -17,9 +17,9 @@
 body .modal {
   position: fixed;
   top: 22%;
-  left: 20%;
-  right: 20%;
-  bottom: 30%;
+  left: 5%;
+  right: 5%;
+  bottom: 33%;
   border: 1px solid #ccc;
   background: #fff;
   overflow: visible;
@@ -142,9 +142,19 @@ ul li a {
   .navbar-form input{
     min-width: 400px;
   }
+
+  body .modal{
+    left: 20%;
+    right: 20%;
+  }
 }
 
 @media (min-width: 1024px) {
+
+  body .modal{
+    left: 30%;
+    right: 30%;
+  }
 
   .event{
     margin-top: 10%;
