@@ -25,21 +25,25 @@ class Events extends Component {
     this.props.selectEvent(event);
   }
 
+  _fetchLocation(){
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.props.fetchLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
+      },(error) => {
+        alert("Unable to get your current location!");
+      })
+    }else {
+      alert('No Geolocation Support!');
+    }
+  }
+
   render(){
     if(!this.props.events){
-      return <div> Loading Events Near You... </div>;
+      return <div> Loading Events Near You...<img src="../../images/loading.gif"/> </div>;
     }
     if(!this.props.lat || !this.props.lng){
-      if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition((position) => {
-          this.props.fetchLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
-        },(error) => {
-          alert("Unable to get your current location!");
-        })
-      }else {
-        alert('No Geolocation Support!');
-      }
-      return <div> Loading Current Location....</div>;
+      this._fetchLocation();
+      return <div> Loading Current Location....<img src="../../images/loading.gif"/></div>;
     }
     return(
       <div className="events">

@@ -38,10 +38,7 @@ class Modal extends Component {
     ReactDOM.render(
       <Provider store={store}>
         <div className="container-fluid">
-          <div col-xs-6 offset-col-xs-3>
-            <EventForm onClose={this.props.onClose.bind(this)}/>
-          </div>
-
+          <EventForm onClose={this.props.onClose.bind(this)}/>
         </div>
       </Provider>,
       this.modalTarget
