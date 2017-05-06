@@ -38,9 +38,7 @@ h2 {
 }
 
 #frontImg {
-  float: left;
-  width: 350px;
-  height: 444px;
+  display: none;
 }
 
 .account {
@@ -135,6 +133,14 @@ ul li a {
 }
 
 @media (min-width: 768px) {
+
+  #frontImg {
+    display: block;
+    float: left;
+    width: 350px;
+    height: 444px;
+  }
+
   .google-map{
     height: 500px;
   }
