@@ -2,6 +2,20 @@
   color: red
 }
 
+#home{
+  background: #0f1721;
+}
+
+.homeText{
+  text-align: center;
+  color: #f9eee0;
+}
+
+label {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
 #events {
   margin-top: 20px;
   margin-left: 20px;
@@ -35,17 +49,6 @@ h2 {
 .frontLogo {
   float:left;
   margin-top: 8px;
-}
-
-#frontImg {
-  display: none;
-}
-
-.account {
-  float: left;
-  border: 1px solid #ccc;
-  width: 350px;
-  height: 444px;
 }
 
 .centered {
@@ -132,21 +135,13 @@ ul li a {
   margin-right: 10%;
 }
 
+video {
+  width: 100%;
+}
+
 @media (min-width: 768px) {
-
-  #frontImg {
-    display: block;
-    float: left;
-    width: 350px;
-    height: 444px;
-  }
-
   .google-map{
     height: 500px;
-  }
-
-  .navbar-form input{
-    min-width: 400px;
   }
 
   body .modal{

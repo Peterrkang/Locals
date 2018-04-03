@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import SignUp from './auth/signup';
 import SignIn from './auth/signin';
+import NavBarSignIn from './auth/navbarsignin'
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { browserHistory } from 'react-router';
+import Events from './events'
+import { Grid, Row, Col } from 'react-bootstrap';
+
 
 class Home extends Component{
   constructor(props){
@@ -26,52 +30,32 @@ class Home extends Component{
     }
   }
 
-  accountState(event){
-    if(this.state.account == true){
-      this.setState({ account: false });
-    }else{
-      this.setState({ account: true });
-    }
-  }
 
   render(){
-    let newUser;
-    if(this.state.account == true){
-      newUser = (
-        <div className="account">
-          <SignIn />
-          <h5 className="centered">Don't have an Account?
-            <a href="#" onClick={this.accountState.bind(this)}> Sign Up</a>
-          </h5>
-        </div>
-      )
-    }else{
-      newUser = (
-        <div className="account">
-          <SignUp />
-          <h5 className="centered">Have an Account?
-            <a href="#" onClick={this.accountState.bind(this)}> Sign In</a>
-          </h5>
-        </div>
-      )
-    }
-
     return(
-      <div className="home">
-        <div className="container-fluid">
-          <span>
-            <img className="frontLogo" src="../../images/HomeLogo.png"/>
-            <h2>Locals</h2>
-          </span>
-          <div className="row">
-            <div className="col-md-offset-2 col-md-4 col-lg-offset-2 col-lg-3 col-xs-6" id="frontImg">
-              <img src="../../images/FrontPage.png"/>
-            </div>
-            <div className="col-xs-6 col-md-4 col-lg-3">
-              {newUser}
-            </div>
-          </div>
+      <div id="home">
+        <NavBarSignIn />
+        <div>
+          <h3 className="homeText">Bored? Want to mix it up today? Join Locals!</h3>
         </div>
+        <video
+          src="https://res.cloudinary.com/dlpclqzwk/video/upload/v1492461740/video_mn8b5p.mp4"
+          loop autoPlay 
+        />
+        <Grid>
+          <Row>
+            <h3 className="homeText">Sign up here!</h3> 
+          </Row>
+          <Row>
+            <Col md={6} mdOffset={3}>
+              <SignUp />
+            </Col>
+          </Row> 
+        </Grid>
+        <footer className="homeText">
+          <a href="http://www.linkedin.com/in/peterrkang"><img src="../../images/linkedin.png"/></a>
+          <a href="http://www.github.com/peterrkang/Locals"><img src="../../images/github.png" /></a>
+        </footer> 
       </div>
     );
   }

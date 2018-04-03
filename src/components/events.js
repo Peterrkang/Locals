@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
 import GoogleMaps from './google_map';
-import Event from '../components/event';
+import Event from './event';
 import EventsList from './events_list';
 import _ from 'lodash';
 import { eventRef } from '../database';
