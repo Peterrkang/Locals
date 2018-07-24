@@ -1,5 +1,5 @@
 # Locals 
-[live](https://join-locals.herokuapp.com/)
+[Click here to check out Locals](https://join-locals.herokuapp.com/)
 
 ## Technologies
 -React
